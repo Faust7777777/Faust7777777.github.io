@@ -1,12 +1,173 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>区块链学信学生创业融资平台 V4</title>
+<title>区块链学信学生创业融资平台 V7.1</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
         /* 所有CSS样式保持不变 */
+        /* 添加Tab式布局样式 */
+        /* 金融申请区Tab式布局 */
+        .team-member {
+    margin-bottom: 2rem;
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+}
+
+.team-member h4 {
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.member-info {
+    margin-left: 1rem;
+}
+
+.achievements {
+    margin-top: 0.5rem;
+    padding-left: 1rem;
+    border-left: 3px solid #3498db;
+}
+.application-tabs {
+  margin-top: 2rem;
+  border: 1px solid #E5E7EB;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow-light);
+}
+
+.application-tab-nav {
+  display: flex;
+  background-color: #F9FAFB;
+  border-bottom: 1px solid #E5E7EB;
+}
+
+.application-tab-link {
+  flex: 1;
+  padding: 15px 20px;
+  background: none;
+  border: none;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--light-text);
+  cursor: pointer;
+  transition: var(--transition);
+  text-align: center;
+  position: relative;
+}
+
+.application-tab-link:hover {
+  background-color: #F3F4F6;
+  color: var(--text-color);
+}
+
+.application-tab-link.active {
+  background-color: var(--white);
+  color: var(--primary-color);
+  border-bottom: 3px solid var(--primary-color);
+}
+
+.application-tab-link i {
+  margin-right: 8px;
+  font-size: 1.2rem;
+}
+
+.application-tab-pane {
+  display: none;
+  padding: 2rem;
+}
+
+.application-tab-pane.active {
+  display: block;
+  animation: fadeIn 0.3s ease;
+}
+
+.file-upload {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .application-tab-nav {
+    flex-direction: column;
+  }
+}
+.loan-tabs {
+  margin-top: 1rem;
+  border: 1px solid #E5E7EB;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.tab-nav {
+  display: flex;
+  background-color: #F9FAFB;
+  border-bottom: 1px solid #E5E7EB;
+}
+
+.tab-link {
+  flex: 1;
+  padding: 12px 16px;
+  background: none;
+  border: none;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--light-text);
+  cursor: pointer;
+  transition: var(--transition);
+  text-align: center;
+}
+
+.tab-link:hover {
+  background-color: #F3F4F6;
+  color: var(--text-color);
+}
+
+.tab-link.active {
+  background-color: var(--white);
+  color: var(--primary-color);
+  border-bottom: 2px solid var(--primary-color);
+}
+
+.tab-pane {
+  display: none;
+  padding: 1.5rem;
+}
+
+.tab-pane.active {
+  display: block;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* 控制间距 */
+}
+
+.logo-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-caption {
+    position: absolute;
+    bottom: -18px; /* 往下移动一点，让文字在图片下 */
+    font-size: 12px;
+    color: #333;
+    white-space: nowrap;
+}
+
         :root {
             --primary-color: #Ff7d00;
             --secondary-color: #Ff7d00;
@@ -41,6 +202,23 @@
             margin: 0 auto;
             padding: 0 1rem;
         }
+.loan-module {
+    margin-top: 1.5rem;
+    padding: 1rem 1.2rem;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    background: #fafafa;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
+
+.module-title {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color, #2a5bd7);
+    border-left: 4px solid var(--primary-color, #2a5bd7);
+    padding-left: 8px;
+}
 
         /* 导航栏样式 */
         header {
@@ -955,49 +1133,182 @@
 </head>
 <body>
    <!-- 导航栏 -->
-    <header id="header">
-        <div class="container">
-            <nav class="navbar">
-        <div class="logo">
-    <img src="https://youke1.picui.cn/s1/2025/10/10/68e88fe9ae975.png" alt="logo" style="height: 5rem;">
-</div>
-                <div class="nav-links">
-                    <img class="image" src="https://icon.bqb.cool/?url=https://gonghangbei.com/" alt="图标" width="40" height="40">
-                    <a href="#home">首页</a>
-                    <a href="#advantages">平台优势</a>
-                    <a href="#credit">信用服务</a>
-                    <a href="#loan-application">助学服务</a>
-                    <a href="#loan-application">消费金融</a>
-                    <a href="#loan-application">创业融资</a>
-                    <a href="https://guanyuwomen.online">关于我们</a>
-                </div>
-                <!-- 搜索栏 -->
-                <div class="search-container">
-                    <input type="text" class="search-input" placeholder="搜索服务、项目或信息...">
-                    <button class="search-button">
-                        <i class="fas fa-search"></i>
-                    </button>
-                </div>
-                <button class="mobile-menu-btn">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </nav>
-        </div>
-    </header>
-
-    <!-- 英雄区域 -->
-    <section class="hero" id="home">
-        <div class="container">
-            <div class="hero-content fade-in-up">
-                <h1>区块链＋学信体系 赋能学生助学融资新生态</h1>
-                <p>安全、透明、公平的区块链学生金融平台</p>
-                <div class="hero-buttons">
-                    <button class="cta-button" id="hero-cta">立即体验</button>
-                    <a href="https://guanyuwomen.online" class="secondary-button" style="text-decoration: none;">了解更多</a>
-                </div>
+      <div class="container">
+        <nav class="navbar">
+            <!-- 左侧 logo -->
+                 <img src="https://youke1.picui.cn/s1/2025/10/10/68e88fe9ae975.png" alt="logo" style="height: 5rem;">
+            <div class="logo-container">
+                <img class="image" src="https://icon.bqb.cool/?url=https://gonghangbei.com/" alt="图标" width="60" height="60">
+                <div class="logo-caption">在您身边 可以信赖</div>
             </div>
-        </div>
-    </section>
+
+            <!-- 中间导航链接 -->
+            <div class="nav-links">
+                <a href="#home">首页</a>
+                <a href="#advantages">平台优势</a>
+                <a href="#credit">信用服务</a>
+                <a href="#loan-application">助学服务</a>
+                <a href="#loan-application">消费金融</a>
+                <a href="#loan-application">创业融资</a>
+                 <a href="https://youke1.picui.cn/s1/2025/10/19/68f46a9ef23cd.png">关于我们</a>
+            </div>
+
+            <!-- 右侧搜索栏 -->
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="搜索服务、项目或信息...">
+                <button class="search-button">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+
+            <!-- 移动端按钮 -->
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </div>
+</header>
+    <!-- 英雄区域 -->
+   <section class="hero" id="home">
+  <div class="container">
+    <div class="hero-content fade-in-up">
+      <h1>区块链＋学信体系 赋能学生助学融资新生态</h1>
+      <p>安全、透明、公平的区块链学生金融平台</p>
+      <div class="hero-buttons">
+        <button class="cta-button" id="hero-cta">立即体验</button>
+        <button class="secondary-button" id="learn-more">了解更多</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+/* 弹窗基础样式 */
+.modal {
+  display: none; /* 默认隐藏 */
+  position: fixed;
+  z-index: 999; /* 置顶 */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background: rgba(0,0,0,0.6); /* 背景半透明 */
+}
+
+/* 弹窗内容 */
+.modal-content {
+  background: #fff;
+  margin: 10% auto;
+  padding: 30px;
+  border-radius: 12px;
+  width: 80%;
+  max-width: 600px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  animation: fadeIn 0.3s ease-in-out;
+  position: relative;
+}
+
+/* 关闭按钮 */
+.close {
+  float: right;
+  font-size: 24px;
+  font-weight: bold;
+  color: #555;
+  cursor: pointer;
+}
+.close:hover { color: #000; }
+
+/* 页面内容区域 */
+.page-content {
+  min-height: 250px;
+  padding: 20px 0;
+  line-height: 1.6;
+}
+
+/* 翻页控制区域 */
+.page-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid #eee;
+}
+
+/* 翻页按钮 */
+.page-btn {
+  padding: 8px 16px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+.page-btn:hover {
+  background-color: #2980b9;
+}
+
+.page-btn:disabled {
+  background-color: #bdc3c7;
+  cursor: not-allowed;
+}
+
+/* 页码指示器 */
+.page-indicator {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.page-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #ddd;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.page-dot.active {
+  background-color: #3498db;
+}
+
+/* 动画 */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+</style>
+
+<!-- 弹窗内容 -->
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2 id="modal-title">关于我们</h2>
+    
+    <!-- 页面内容区域 -->
+    <div class="page-content" id="page-content">
+      <!-- 页面内容将通过JavaScript动态填充 -->
+    </div>
+    
+    <!-- 翻页控制 -->
+    <div class="page-controls">
+      <button class="page-btn" id="prev-btn">上一页</button>
+      
+      <div class="page-indicator" id="page-indicator">
+        <!-- 页码指示器将通过JavaScript动态生成 -->
+      </div>
+      
+      <button class="page-btn" id="next-btn">下一页</button>
+    </div>
+  </div>
+</div>
+
+
 
     <!-- 优势展示区 -->
     <section class="section" id="advantages">
@@ -1112,148 +1423,328 @@
     </section>
 
     <!-- 区块链金融申请区 -->
-  <!-- 区块链金融申请区 -->
+ <!-- 区块链金融申请区 -->
+<!-- 区块链金融申请区 -->
 <section class="loan-application" id="loan-application">
     <div class="section-container">
         <h2 class="section-title">金融申请服务</h2>
         
-        <div class="progress-indicator">
-            <div class="progress-step step-active">
-                <div class="step-number">1</div>
-                <span class="step-label">个人信息</span>
+        <!-- Tab式申请表单 -->
+        <div class="application-tabs">
+            <div class="application-tab-nav">
+                <button class="application-tab-link active" data-tab="education">
+                    <i class="fas fa-graduation-cap"></i>
+                    助学贷款
+                </button>
+                <button class="application-tab-link" data-tab="consumption">
+                    <i class="fas fa-shopping-cart"></i>
+                    消费金融
+                </button>
+                <button class="application-tab-link" data-tab="startup">
+                    <i class="fas fa-rocket"></i>
+                    创业融资
+                </button>
             </div>
-            <div class="progress-step">
-                <div class="step-number">2</div>
-                <span class="step-label">学校信息</span>
-            </div>
-            <div class="progress-step">
-                <div class="step-number">3</div>
-                <span class="step-label">资金需求</span>
-            </div>
-            <div class="progress-step">
-                <div class="step-number">4</div>
-                <span class="step-label">提交申请</span>
-            </div>
-        </div>
-        
-        <div class="application-form">
-            <form id="loan-form">
-                <div class="form-grid">
-                    <div class="form-group">
-                        <label for="name" class="form-label">姓名</label>
-                        <input type="text" id="name" class="form-input" placeholder="请输入您的姓名" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="id-number" class="form-label">身份证号</label>
-                        <input type="text" id="id-number" class="form-input" placeholder="请输入身份证号码" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="school" class="form-label">学校名称</label>
-                        <input type="text" id="school" class="form-input" placeholder="请输入就读学校" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="major" class="form-label">专业</label>
-                        <input type="text" id="major" class="form-input" placeholder="请输入所学专业" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="grade" class="form-label">年级</label>
-                        <select id="grade" class="form-select" required>
-                            <option value="">请选择年级</option>
-                            <option value="freshman">大一</option>
-                            <option value="sophomore">大二</option>
-                            <option value="junior">大三</option>
-                            <option value="senior">大四</option>
-                            <option value="graduate">研究生</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="loan-type" class="form-label">贷款类型</label>
-                        <select id="loan-type" class="form-select" required>
-                            <option value="">请选择贷款类型</option>
-                            <option value="startup">创业融资</option>
-                            <option value="education">助学贷款</option>
-                            <option value="consumption">消费金融</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group full-width">
-                        <label for="project-desc" class="form-label">项目描述/资金用途</label>
-                        <textarea id="project-desc" class="form-textarea" placeholder="请详细描述您的创业项目或资金用途..." required></textarea>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="amount" class="form-label">申请金额 (元)</label>
-                        <input type="number" id="amount" class="form-input" placeholder="请输入申请金额" min="1000" step="1000" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="duration" class="form-label">贷款期限 (月)</label>
-                        <select id="duration" class="form-select" required>
-                            <option value="">请选择期限</option>
-                            <option value="6">6个月</option>
-                            <option value="12">12个月</option>
-                            <option value="24">24个月</option>
-                            <option value="36">36个月</option>
-                        </select>
-                    </div>
-                    
-                    <!-- 新增的下载和上传按钮 -->
-                    <div class="form-group full-width" style="margin-top: 1rem;">
-                        <div style="display: flex; gap: 1rem; align-items: center;">
-                            <a href="https://youke1.picui.cn/s1/2025/10/12/68eb180be7bb1.png" download="资信表.png" class="btn btn-secondary">
-                                <i class="fas fa-download"></i> 下载资信表
-                            </a>
-                            <div style="flex: 1; display: flex; align-items: center;">
-                                <label for="file-upload" class="btn btn-secondary" style="margin-right: 1rem;">
-                                    <i class="fas fa-upload"></i> 上传资信表与综评
-                                </label>
-                                <input type="file" id="file-upload" style="display: none;" accept=".png,.jpg,.jpeg,.pdf">
-                                <span id="file-name" style="color: var(--light-text); font-size: 0.9rem;"></span>
+            
+            <!-- 助学贷款Tab -->
+            <div id="education" class="application-tab-pane active">
+                <form id="education-form">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="edu-name" class="form-label">姓名</label>
+                            <input type="text" id="edu-name" class="form-input" placeholder="请输入您的姓名" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="edu-id" class="form-label">身份证号</label>
+                            <input type="text" id="edu-id" class="form-input" placeholder="请输入身份证号码" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="edu-school" class="form-label">学校名称</label>
+                            <input type="text" id="edu-school" class="form-input" placeholder="请输入就读学校" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="edu-major" class="form-label">专业</label>
+                            <input type="text" id="edu-major" class="form-input" placeholder="请输入所学专业" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="edu-grade" class="form-label">年级</label>
+                            <select id="edu-grade" class="form-select" required>
+                                <option value="">请选择年级</option>
+                                <option value="freshman">大一</option>
+                                <option value="sophomore">大二</option>
+                                <option value="junior">大三</option>
+                                <option value="senior">大四</option>
+                                <option value="graduate">研究生</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="edu-tuition" class="form-label">学费金额 (元)</label>
+                            <input type="number" id="edu-tuition" class="form-input" placeholder="请输入学费金额" min="1000" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="edu-semester" class="form-label">学期数</label>
+                            <select id="edu-semester" class="form-select" required>
+                                <option value="">请选择学期</option>
+                                <option value="1">1学期</option>
+                                <option value="2">2学期</option>
+                                <option value="4">4学期</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="edu-amount" class="form-label">申请金额 (元)</label>
+                            <input type="number" id="edu-amount" class="form-input" placeholder="请输入申请金额" min="1000" step="1000" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="edu-duration" class="form-label">贷款期限 (月)</label>
+                            <select id="edu-duration" class="form-select" required>
+                                <option value="">请选择期限</option>
+                                <option value="6">12个月</option>
+                                <option value="12">48个月</option>
+                                <option value="24">96个月</option>
+                                <option value="36">120个月</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label for="edu-purpose" class="form-label">资金用途说明</label>
+                            <textarea id="edu-purpose" class="form-textarea" placeholder="请详细描述您的资金用途..." required></textarea>
+                        </div>
+                        
+                        <!-- 文件上传区 -->
+                        <div class="form-group full-width">
+                            <div class="file-upload">
+                              <a href="https://youke1.picui.cn/s1/2025/10/12/68eb180be7bb1.png" download="资信表.png" class="btn btn-secondary">
+                                    <i class="fas fa-download"></i> 下载资信表
+                                </a>
+                                <div style="flex: 1; display: flex; align-items: center;">
+                                    <label for="edu-file-upload" class="btn btn-secondary" style="margin-right: 1rem;">
+                                        <i class="fas fa-upload"></i> 上传资信表与综评
+                                    </label>
+                                    <input type="file" id="edu-file-upload" style="display: none;" accept=".png,.jpg,.jpeg,.pdf">
+                                    <span id="edu-file-name" style="color: var(--light-text); font-size: 0.9rem;"></span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                
-                <div class="form-actions">
-                    <button type="reset" class="btn btn-secondary">重置</button>
-                    <button type="submit" class="btn btn-primary">提交申请</button>
-                </div>
-            </form>
+                    
+                    <div class="form-actions">
+                        <button type="reset" class="btn btn-secondary">重置</button>
+                        <button type="submit" class="btn btn-primary">提交申请</button>
+                    </div>
+                </form>
+            </div>
+            
+            <!-- 消费金融Tab -->
+            <div id="consumption" class="application-tab-pane">
+                <form id="consumption-form">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="con-name" class="form-label">姓名</label>
+                            <input type="text" id="con-name" class="form-input" placeholder="请输入您的姓名" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="con-id" class="form-label">身份证号</label>
+                            <input type="text" id="con-id" class="form-input" placeholder="请输入身份证号码" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="con-school" class="form-label">学校名称</label>
+                            <input type="text" id="con-school" class="form-input" placeholder="请输入就读学校" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="con-major" class="form-label">专业</label>
+                            <input type="text" id="con-major" class="form-input" placeholder="请输入所学专业" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="con-grade" class="form-label">年级</label>
+                            <select id="con-grade" class="form-select" required>
+                                <option value="">请选择年级</option>
+                                <option value="freshman">大一</option>
+                                <option value="sophomore">大二</option>
+                                <option value="junior">大三</option>
+                                <option value="senior">大四</option>
+                                <option value="graduate">研究生</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="con-purpose" class="form-label">消费类型</label>
+                            <select id="con-purpose" class="form-select" required>
+                                <option value="">请选择用途</option>
+                                <option value="electronics">电子产品</option>
+                                <option value="travel">出行旅游</option>
+                                <option value="daily">生活消费</option>
+                                <option value="study">学习资料</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="con-repayment" class="form-label">还款来源</label>
+                            <input type="text" id="con-repayment" class="form-input" placeholder="如兼职收入、家长资助等" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="con-amount" class="form-label">申请金额 (元)</label>
+                            <input type="number" id="con-amount" class="form-input" placeholder="请输入申请金额" min="1000" step="1000" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="con-duration" class="form-label">贷款期限 (月)</label>
+                            <select id="con-duration" class="form-select" required>
+                                <option value="">请选择期限</option>
+                                <option value="3">3个月</option>
+                                <option value="6">6个月</option>
+                                <option value="12">12个月</option>
+                                <option value="24">24个月</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label for="con-desc" class="form-label">消费计划说明</label>
+                            <textarea id="con-desc" class="form-textarea" placeholder="请详细描述您的消费计划..." required></textarea>
+                        </div>
+                        
+                        <!-- 文件上传区 -->
+                        <div class="form-group full-width">
+                            <div class="file-upload">
+                               <a href="https://youke1.picui.cn/s1/2025/10/12/68eb180be7bb1.png" download="资信表.png" class="btn btn-secondary">
+                                    <i class="fas fa-download"></i> 下载资信表
+                                </a>
+                                <div style="flex: 1; display: flex; align-items: center;">
+                                    <label for="con-file-upload" class="btn btn-secondary" style="margin-right: 1rem;">
+                                        <i class="fas fa-upload"></i> 上传资信表与综评
+                                    </label>
+                                    <input type="file" id="con-file-upload" style="display: none;" accept=".png,.jpg,.jpeg,.pdf">
+                                    <span id="con-file-name" style="color: var(--light-text); font-size: 0.9rem;"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="reset" class="btn btn-secondary">重置</button>
+                        <button type="submit" class="btn btn-primary">提交申请</button>
+                    </div>
+                </form>
+            </div>
+            
+            <!-- 创业融资Tab -->
+            <div id="startup" class="application-tab-pane">
+                <form id="startup-form">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="startup-name" class="form-label">姓名</label>
+                            <input type="text" id="startup-name" class="form-input" placeholder="请输入您的姓名" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="startup-id" class="form-label">身份证号</label>
+                            <input type="text" id="startup-id" class="form-input" placeholder="请输入身份证号码" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="startup-school" class="form-label">学校名称</label>
+                            <input type="text" id="startup-school" class="form-input" placeholder="请输入就读学校" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="startup-major" class="form-label">专业</label>
+                            <input type="text" id="startup-major" class="form-input" placeholder="请输入所学专业" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="startup-grade" class="form-label">年级</label>
+                            <select id="startup-grade" class="form-select" required>
+                                <option value="">请选择年级</option>
+                                <option value="freshman">大一</option>
+                                <option value="sophomore">大二</option>
+                                <option value="junior">大三</option>
+                                <option value="senior">大四</option>
+                                <option value="graduate">研究生</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="startup-project" class="form-label">项目名称</label>
+                            <input type="text" id="startup-project" class="form-input" placeholder="请输入创业项目名称" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="startup-team" class="form-label">团队人数</label>
+                            <input type="number" id="startup-team" class="form-input" placeholder="请输入团队人数" min="1" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="startup-amount" class="form-label">申请金额 (元)</label>
+                            <input type="number" id="startup-amount" class="form-input" placeholder="请输入申请金额" min="10000" step="1000" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="startup-duration" class="form-label">融资期限 (月)</label>
+                            <select id="startup-duration" class="form-select" required>
+                                <option value="">请选择期限</option>
+                                <option value="12">12个月</option>
+                                <option value="24">24个月</option>
+                                <option value="36">36个月</option>
+                                <option value="48">48个月</option>
+                            </select>
+                        </div>
+                        
+                         <!-- 合并后的全宽文本区域 -->
+            <div class="form-group full-width">
+                <label for="startup-content-type" class="form-label">内容类型</label>
+                <select id="startup-content-type" class="form-select" style="margin-bottom: 1rem;">
+                    <option value="plan">商业计划书摘要</option>
+                    <option value="market">市场分析与目标客户</option>
+                    <option value="competitive">产品与服务</option>
+                    <option value="risk">营销策略</option>
+                    <option value="team">运营计划</option>
+                </select>
+                <textarea id="startup-content" class="form-textarea" placeholder="请根据选择的内容类型填写相应信息..." required></textarea>
+            </div>
+                        
+                        <div class="form-group full-width">
+                            <label for="startup-market" class="form-label">财务预测</label>
+                            <textarea id="startup-market" class="form-textarea" placeholder="请描述资金需求与使用计划..."></textarea>
+                        </div>
+                        
+                        <!-- 文件上传区 -->
+                        <div class="form-group full-width">
+                            <div class="file-upload">
+                            <a href="https://youke1.picui.cn/s1/2025/10/12/68eb180be7bb1.png" download="资信表.png" class="btn btn-secondary">
+                                    <i class="fas fa-download"></i> 下载资信表
+                                </a>
+                                <div style="flex: 1; display: flex; align-items: center;">
+                                    <label for="startup-file-upload" class="btn btn-secondary" style="margin-right: 1rem;">
+                                        <i class="fas fa-upload"></i> 上传商业计划书
+                                    </label>
+                                    <input type="file" id="startup-file-upload" style="display: none;" accept=".png,.jpg,.jpeg,.pdf,.doc,.docx">
+                                    <span id="startup-file-name" style="color: var(--light-text); font-size: 0.9rem;"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="reset" class="btn btn-secondary">重置</button>
+                        <button type="submit" class="btn btn-primary">提交申请</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </section>
-    <!-- 数据仪表盘 -->
-    <section class="section">
-        <div class="container">
-            <div class="section-title fade-in-up">
-                <h2>平台数据概览</h2>
-                <p>实时展示平台运营数据，透明可信</p>
-            </div>
-            <div class="dashboard">
-                <div class="data-card fade-in-up delay-1">
-                    <div class="data-value">5,280</div>
-                    <div class="data-label">已发放贷款笔数</div>
-                </div>
-                <div class="data-card fade-in-up delay-2">
-                    <div class="data-value">712</div>
-                    <div class="data-label">平均信用分数</div>
-                </div>
-                <div class="data-card fade-in-up delay-3">
-                    <div class="data-value">4.8%</div>
-                    <div class="data-label">平均利率</div>
-                </div>
-                <div class="data-card fade-in-up delay-4">
-                    <div class="data-value">98.5%</div>
-                    <div class="data-label">还款完成率</div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- 页脚 -->
     <footer>
@@ -1331,162 +1822,1213 @@
     </div>
 
     <script>
-// 文件上传处理
-document.getElementById('file-upload').addEventListener('change', function(e) {
-    const fileName = document.getElementById('file-name');
-    if (this.files.length > 0) {
-        fileName.textContent = '已选择文件: ' + this.files[0].name;
-    } else {
-        fileName.textContent = '';
+        // 定义十页内容
+const pages = [
+  {
+  title: "时间表与路线图",
+  content: `
+    <div style="line-height: 1.8;">
+      <p>本团队从建设、运行与推广三个维度，规划基于区块链的教育金融系统实践与落地路径，采用"小步快跑、迭代验证"的策略，分四期推进：</p>
+      
+      <div style="margin: 20px 0; background: #f8f9fa; padding: 15px; border-radius: 8px;">
+        <strong>学信链融建设时间表和路线图</strong>
+      </div>
+
+      <!-- 时间轴设计 -->
+      <div style="position: relative; margin: 30px 0;">
+        <!-- 时间轴线 -->
+        <div style="position: absolute; left: 120px; top: 0; bottom: 0; width: 3px; background: linear-gradient(to bottom, var(--primary-color), #e0e0e0);"></div>
+        
+        <!-- 第一期 -->
+        <div style="display: flex; align-items: flex-start; margin-bottom: 30px; position: relative;">
+          <div style="width: 120px; flex-shrink: 0;">
+            <div style="background: var(--primary-color); color: white; padding: 8px 12px; border-radius: 20px; text-align: center; font-weight: bold; font-size: 0.9rem;">
+              0.5年
+            </div>
+          </div>
+          <div style="position: absolute; left: 115px; top: 8px; width: 16px; height: 16px; background: var(--primary-color); border-radius: 50%; border: 3px solid white; box-shadow: 0 0 0 2px var(--primary-color);"></div>
+          <div style="background: white; padding: 15px; border-radius: 8px; border-left: 4px solid var(--primary-color); box-shadow: 0 2px 8px rgba(0,0,0,0.1); margin-left: 40px; flex: 1;">
+            <h5 style="margin: 0 0 10px 0; color: var(--primary-color);">第一期：MVP与试点</h5>
+            <div style="font-size: 0.9rem; color: #666;">
+              <strong>目标：</strong>验证核心逻辑，跑通基本流程<br>
+              <strong>关键成果：</strong>2-3所高校试点，对接高中评价系统
+            </div>
+          </div>
+        </div>
+
+        <!-- 第二期 -->
+        <div style="display: flex; align-items: flex-start; margin-bottom: 30px; position: relative;">
+          <div style="width: 120px; flex-shrink: 0;">
+            <div style="background: #28a745; color: white; padding: 8px 12px; border-radius: 20px; text-align: center; font-weight: bold; font-size: 0.9rem;">
+              1.5-3年
+            </div>
+          </div>
+          <div style="position: absolute; left: 115px; top: 8px; width: 16px; height: 16px; background: #28a745; border-radius: 50%; border: 3px solid white; box-shadow: 0 0 0 2px #28a745;"></div>
+          <div style="background: white; padding: 15px; border-radius: 8px; border-left: 4px solid #28a745; box-shadow: 0 2px 8px rgba(0,0,0,0.1); margin-left: 40px; flex: 1;">
+            <h5 style="margin: 0 0 10px 0; color: #28a745;">第二期：生态拓展</h5>
+            <div style="font-size: 0.9rem; color: #666;">
+              <strong>目标：</strong>扩大网络效应，验证商业模式<br>
+              <strong>关键成果：</strong>20-30所高校，复杂智能合约产品
+            </div>
+          </div>
+        </div>
+
+        <!-- 第三期 -->
+        <div style="display: flex; align-items: flex-start; margin-bottom: 30px; position: relative;">
+          <div style="width: 120px; flex-shrink: 0;">
+            <div style="background: #17a2b8; color: white; padding: 8px 12px; border-radius: 20px; text-align: center; font-weight: bold; font-size: 0.9rem;">
+              3-5年
+            </div>
+          </div>
+          <div style="position: absolute; left: 115px; top: 8px; width: 16px; height: 16px; background: #17a2b8; border-radius: 50%; border: 3px solid white; box-shadow: 0 0 0 2px #17a2b8;"></div>
+          <div style="background: white; padding: 15px; border-radius: 8px; border-left: 4px solid #17a2b8; box-shadow: 0 2px 8px rgba(0,0,0,0.1); margin-left: 40px; flex: 1;">
+            <h5 style="margin: 0 0 10px 0; color: #17a2b8;">第三期：全面推广</h5>
+            <div style="font-size: 0.9rem; color: #666;">
+              <strong>目标：</strong>成为国家级基础设施<br>
+              <strong>关键成果：</strong>全国高校覆盖，接入央行征信
+            </div>
+          </div>
+        </div>
+
+        <!-- 第四期 -->
+        <div style="display: flex; align-items: flex-start; margin-bottom: 30px; position: relative;">
+          <div style="width: 120px; flex-shrink: 0;">
+            <div style="background: #6f42c1; color: white; padding: 8px 12px; border-radius: 20px; text-align: center; font-weight: bold; font-size: 0.9rem;">
+              5年+
+            </div>
+          </div>
+          <div style="position: absolute; left: 115px; top: 8px; width: 16px; height: 16px; background: #6f42c1; border-radius: 50%; border: 3px solid white; box-shadow: 0 0 0 2px #6f42c1;"></div>
+          <div style="background: white; padding: 15px; border-radius: 8px; border-left: 4px solid #6f42c1; box-shadow: 0 2px 8px rgba(0,0,0,0.1); margin-left: 40px; flex: 1;">
+            <h5 style="margin: 0 0 10px 0; color: #6f42c1;">第四期：国际化</h5>
+            <div style="font-size: 0.9rem; color: #666;">
+              <strong>目标：</strong>实现国际教育金融互认<br>
+              <strong>关键成果：</strong>AI+区块链预测模型，NFT创业凭证
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 投入产出摘要 -->
+      <div style="background: #e8f4fd; padding: 15px; border-radius: 8px; margin-top: 20px;">
+        <h5 style="margin: 0 0 10px 0; color: var(--primary-color);">投入产出摘要</h5>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 0.9rem;">
+          <div>
+            <strong>总投入：</strong>500万元<br>
+            <strong>技术研发：</strong>40% (200万)<br>
+            <strong>市场推广：</strong>30% (150万)
+          </div>
+          <div>
+            <strong>团队建设：</strong>20% (100万)<br>
+            <strong>运营储备：</strong>10% (50万)<br>
+            <strong>预期第3年盈利</strong>
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 15px;">
+
+      </div>
+    </div>
+  `
+},
+  {
+    title: "产品与服务",
+    content: `
+        <div style="line-height: 1.8;">
+      <div style="margin-bottom: 25px;">
+        <h4 style="color: var(--primary-color); margin-bottom: 15px;">2.1 学信贷系列</h4>
+        <div style="border: 1px solid #ddd; border-radius: 8px; overflow: hidden;">
+          <table style="width: 100%; border-collapse: collapse;">
+            <tr style="background-color: #f8f9fa;">
+              <th style="padding: 12px; border: 1px solid #ddd; text-align: left; width: 25%;">产品类型</th>
+              <th style="padding: 12px; border: 1px solid #ddd; text-align: left; width: 25%;">额度范围</th>
+              <th style="padding: 12px; border: 1px solid #ddd; text-align: left; width: 25%;">期限</th>
+              <th style="padding: 12px; border: 1px solid #ddd; text-align: left; width: 25%;">利率/模式</th>
+            </tr>
+            <tr>
+              <td style="padding: 12px; border: 1px solid #ddd; font-weight: bold;">学费贷</td>
+              <td style="padding: 12px; border: 1px solid #ddd;">2-10万元</td>
+              <td style="padding: 12px; border: 1px solid #ddd;">1-5年</td>
+              <td style="padding: 12px; border: 1px solid #ddd;">LPR+1%-3%</td>
+            </tr>
+            <tr>
+              <td style="padding: 12px; border: 1px solid #ddd; font-weight: bold;">生活贷</td>
+              <td style="padding: 12px; border: 1px solid #ddd;">0.5-2万元</td>
+              <td style="padding: 12px; border: 1px solid #ddd;">6-24个月</td>
+              <td style="padding: 12px; border: 1px solid #ddd;">按日计息</td>
+            </tr>
+            <tr>
+              <td style="padding: 12px; border: 1px solid #ddd; font-weight: bold;">创业贷</td>
+              <td style="padding: 12px; border: 1px solid #ddd;">5-50万元</td>
+              <td style="padding: 12px; border: 1px solid #ddd;">灵活定制</td>
+              <td style="padding: 12px; border: 1px solid #ddd;">股权投资+债权融资组合</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <div style="margin-bottom: 20px;">
+        <h4 style="color: var(--primary-color); margin-bottom: 15px;">2.2 信用服务</h4>
+        <div style="background: #f8f9fa; padding: 20px; border-radius: 8px;">
+          <ul style="list-style-type: none; padding: 0; margin: 0;">
+            <li style="padding: 10px 0; border-bottom: 1px solid #e9ecef;">
+              <i class="fas fa-id-card" style="color: var(--primary-color); margin-right: 10px;"></i>
+              <strong>数字身份DID管理</strong>
+              <p style="margin: 5px 0 0 25px; color: #666; font-size: 0.9em;">去中心化身份标识，确保个人数据主权</p>
+            </li>
+            <li style="padding: 10px 0; border-bottom: 1px solid #e9ecef;">
+              <i class="fas fa-chart-line" style="color: var(--primary-color); margin-right: 10px;"></i>
+              <strong>动态信用评分(300-850分)</strong>
+              <p style="margin: 5px 0 0 25px; color: #666; font-size: 0.9em;">基于区块链数据的实时信用评估体系</p>
+            </li>
+            <li style="padding: 10px 0; border-bottom: 1px solid #e9ecef;">
+              <i class="fas fa-certificate" style="color: var(--primary-color); margin-right: 10px;"></i>
+              <strong>可验证数字凭证</strong>
+              <p style="margin: 5px 0 0 25px; color: #666; font-size: 0.9em;">学历、成绩、奖项等可信数字证明</p>
+            </li>
+            <li style="padding: 10px 0;">
+              <i class="fas fa-file-alt" style="color: var(--primary-color); margin-right: 10px;"></i>
+              <strong>就业信用报告</strong>
+              <p style="margin: 5px 0 0 25px; color: #666; font-size: 0.9em;">面向用人单位的综合信用评估报告</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="background: #e8f4fd; padding: 15px; border-radius: 8px; border-left: 4px solid var(--primary-color);">
+        <strong>服务特色：</strong>所有产品均基于区块链技术，实现信用数据的透明、可追溯、不可篡改，为学生提供全方位的金融支持和信用服务。
+      </div>
+    </div>
+  `  },
+     { 
+    title: "市场分析",
+    content: `
+    <div style="line-height: 1.8;">
+      <div style="margin-bottom: 25px;">
+        <h4 style="color: var(--primary-color); margin-bottom: 15px;">3.1 目标市场规模</h4>
+        <div style="background: #f8f9fa; padding: 20px; border-radius: 8px;">
+          <ul style="list-style-type: none; padding: 0; margin: 0;">
+            <li style="padding: 12px 0; border-bottom: 1px solid #e9ecef;">
+              <i class="fas fa-users" style="color: var(--primary-color); margin-right: 10px;"></i>
+              <strong>核心用户：</strong>高等教育在校生 <span style="color: var(--primary-color); font-weight: bold;">4430万人</span>
+            </li>
+            <li style="padding: 12px 0; border-bottom: 1px solid #e9ecef;">
+              <i class="fas fa-money-bill-wave" style="color: var(--primary-color); margin-right: 10px;"></i>
+              <strong>年度市场规模：</strong>
+              <div style="margin-left: 25px; margin-top: 8px;">
+                <div>• 学费贷款 <span style="color: var(--primary-color); font-weight: bold;">800亿元</span></div>
+                <div>• 消费贷款 <span style="color: var(--primary-color); font-weight: bold;">1200亿元</span></div>
+                <div>• 创业贷款 <span style="color: var(--primary-color); font-weight: bold;">200亿元</span></div>
+              </div>
+            </li>
+            <li style="padding: 12px 0;">
+              <i class="fas fa-chart-bar" style="color: var(--primary-color); margin-right: 10px;"></i>
+              <strong>目标渗透率：</strong>
+              <div style="margin-left: 25px; margin-top: 8px;">
+                <div>• 第一年 <span style="color: var(--primary-color); font-weight: bold;">0.5%</span></div>
+                <div>• 第三年 <span style="color: var(--primary-color); font-weight: bold;">3%</span></div>
+                <div>• 第五年 <span style="color: var(--primary-color); font-weight: bold;">8%</span></div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div style="margin-bottom: 25px;">
+        <h4 style="color: var(--primary-color); margin-bottom: 15px;">3.2 竞争格局</h4>
+        <div style="border: 1px solid #ddd; border-radius: 8px; overflow: hidden; margin-bottom: 15px;">
+          <div style="background: #f8f9fa; padding: 10px; text-align: center; font-weight: bold;">
+            表16：主要竞争对手优劣势
+          </div>
+          <table style="width: 100%; border-collapse: collapse;">
+            <tr style="background-color: #e9ecef;">
+              <th style="padding: 12px; border: 1px solid #ddd; text-align: left; width: 20%;">竞争对手</th>
+              <th style="padding: 12px; border: 1px solid #ddd; text-align: left; width: 25%;">优势</th>
+              <th style="padding: 12px; border: 1px solid #ddd; text-align: left; width: 25%;">劣势</th>
+              <th style="padding: 12px; border: 1px solid #ddd; text-align: left; width: 30%;">我们的差异化</th>
+            </tr>
+            <tr>
+              <td style="padding: 12px; border: 1px solid #ddd; font-weight: bold;">传统银行</td>
+              <td style="padding: 12px; border: 1px solid #ddd;">资金成本低、品牌信誉高</td>
+              <td style="padding: 12px; border: 1px solid #ddd;">风控模型落后、服务体验差</td>
+              <td style="padding: 12px; border: 1px solid #ddd;">动态信用评估、全线上流程</td>
+            </tr>
+            <tr>
+              <td style="padding: 12px; border: 1px solid #ddd; font-weight: bold;">互联网金融平台</td>
+              <td style="padding: 12px; border: 1px solid #ddd;">用户体验好、审批快速</td>
+              <td style="padding: 12px; border: 1px solid #ddd;">利率高、监管风险大</td>
+              <td style="padding: 12px; border: 1px solid #ddd;">资金成本低、数据维度丰富</td>
+            </tr>
+            <tr>
+              <td style="padding: 12px; border: 1px solid #ddd; font-weight: bold;">校园贷平台</td>
+              <td style="padding: 12px; border: 1px solid #ddd;">场景精准、推广便捷</td>
+              <td style="padding: 12px; border: 1px solid #ddd;">声誉差、模式不可持续</td>
+              <td style="padding: 12px; border: 1px solid #ddd;">合规经营、生态共建</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <div style="margin-bottom: 20px;">
+        <h4 style="color: var(--primary-color); margin-bottom: 15px;">3.3 用户画像</h4>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+          <div style="background: #fff3cd; padding: 20px; border-radius: 8px; border-left: 4px solid #ffc107;">
+            <h5 style="color: #856404; margin-bottom: 10px;">（1）教育投入约束型（A型，约占60%）</h5>
+            <p style="color: #856404; margin: 0; font-size: 0.95em;">
+              学生家庭收入相对一般，来自于家庭的资金支持能力相对有限，主要金融需求集中于教育融资与生活分期支付领域。
+            </p>
+          </div>
+          <div style="background: #d1ecf1; padding: 20px; border-radius: 8px; border-left: 4px solid #17a2b8;">
+            <h5 style="color: #0c5460; margin-bottom: 10px;">（2）自主发展型（B型，约占25%）</h5>
+            <p style="color: #0c5460; margin: 0; font-size: 0.95em;">
+              家庭收入相对较高，具备较强的社会与教育资源投入支撑，消费、创业及财富管理动机突出，倾向于使用多元化金融工具。
+            </p>
+          </div>
+          <div style="background: #d4edda; padding: 20px; border-radius: 8px; border-left: 4px solid #28a745;">
+            <h5 style="color: #155724; margin-bottom: 10px;">（3）科研创新型（C型，约占15%）</h5>
+            <p style="color: #155724; margin: 0; font-size: 0.95em;">
+              以科研及创新创业为核心导向，金融需求主要集中于高风险资金支持及知识产权融资，少部分本科生和研究生。
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div style="background: #e8f4fd; padding: 15px; border-radius: 8px; border-left: 4px solid var(--primary-color); margin-top: 20px;">
+        <strong>市场机会：</strong>基于区块链技术的创新金融服务，在传统金融机构服务不足的学生市场具有显著竞争优势，预计可快速占领细分市场。
+      </div>
+    </div>
+  `},
+ {
+  title: "营销策略",
+  content: `
+    <div style="line-height: 1.8;">
+      <div style="margin-bottom: 25px;">
+        <h4 style="color: var(--primary-color); margin-bottom: 15px;">4.1 用户获取策略</h4>
+        
+        <div style="margin-bottom: 20px;">
+          <h5 style="color: #666; margin-bottom: 10px; border-left: 3px solid var(--primary-color); padding-left: 10px;">1. 线上渠道</h5>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+            <div style="background: #f8f9fa; padding: 15px; border-radius: 8px;">
+              <i class="fas fa-share-alt" style="color: var(--primary-color); margin-right: 8px;"></i>
+              <strong>社交媒体营销：</strong>抖音、B站、小红书内容矩阵
+            </div>
+            <div style="background: #f8f9fa; padding: 15px; border-radius: 8px;">
+              <i class="fas fa-search" style="color: var(--primary-color); margin-right: 8px;"></i>
+              <strong>搜索引擎优化：</strong>教育金融关键词精准投放
+            </div>
+            <div style="background: #f8f9fa; padding: 15px; border-radius: 8px;">
+              <i class="fas fa-star" style="color: var(--primary-color); margin-right: 8px;"></i>
+              <strong>KOL合作：</strong>校园意见领袖推广计划
+            </div>
+            <div style="background: #f8f9fa; padding: 15px; border-radius: 8px;">
+              <i class="fas fa-trophy" style="color: var(--primary-color); margin-right: 8px;"></i>
+              <strong>线上活动：</strong>信用知识竞赛、创业大赛
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-bottom: 20px;">
+          <h5 style="color: #666; margin-bottom: 10px; border-left: 3px solid var(--primary-color); padding-left: 10px;">2. 线下渠道</h5>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+            <div style="background: #f8f9fa; padding: 15px; border-radius: 8px;">
+              <i class="fas fa-user-graduate" style="color: var(--primary-color); margin-right: 8px;"></i>
+              <strong>校园推广大使：</strong>100所高校200名校园大使
+            </div>
+            <div style="background: #f8f9fa; padding: 15px; border-radius: 8px;">
+              <i class="fas fa-calendar-alt" style="color: var(--primary-color); margin-right: 8px;"></i>
+              <strong>校园活动：</strong>新生入学季、毕业季专题活动
+            </div>
+            <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; grid-column: span 2;">
+              <i class="fas fa-handshake" style="color: var(--primary-color); margin-right: 8px;"></i>
+              <strong>校企合作：</strong>与高校创新创业学院深度合作
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-bottom: 20px;">
+        <h4 style="color: var(--primary-color); margin-bottom: 15px;">4.2 定价策略</h4>
+        
+        <div style="margin-bottom: 20px;">
+          <h5 style="color: #666; margin-bottom: 10px; border-left: 3px solid var(--primary-color); padding-left: 10px;">1. 收入模式</h5>
+          <div style="border: 1px solid #ddd; border-radius: 8px; overflow: hidden;">
+            <table style="width: 100%; border-collapse: collapse;">
+              <tr style="background-color: #f8f9fa;">
+                <th style="padding: 12px; border: 1px solid #ddd; text-align: left; width: 40%;">收入来源</th>
+                <th style="padding: 12px; border: 1px solid #ddd; text-align: left; width: 60%;">收费模式</th>
+              </tr>
+              <tr>
+                <td style="padding: 12px; border: 1px solid #ddd; font-weight: bold;">交易佣金</td>
+                <td style="padding: 12px; border: 1px solid #ddd;">贷款金额的0.5%-1.5%</td>
+              </tr>
+              <tr>
+                <td style="padding: 12px; border: 1px solid #ddd; font-weight: bold;">技术服务费</td>
+                <td style="padding: 12px; border: 1px solid #ddd;">金融机构年费5-20万元</td>
+              </tr>
+              <tr>
+                <td style="padding: 12px; border: 1px solid #ddd; font-weight: bold;">数据服务费</td>
+                <td style="padding: 12px; border: 1px solid #ddd;">企业招聘背调199元/人</td>
+              </tr>
+              <tr>
+                <td style="padding: 12px; border: 1px solid #ddd; font-weight: bold;">增值服务</td>
+                <td style="padding: 12px; border: 1px solid #ddd;">信用报告99元/份</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
+        <div>
+          <h5 style="color: #666; margin-bottom: 10px; border-left: 3px solid var(--primary-color); padding-left: 10px;">2. 定价优势</h5>
+          <div style="background: #e8f5e8; padding: 15px; border-radius: 8px;">
+            <div style="margin-bottom: 8px;">
+              <i class="fas fa-percentage" style="color: #28a745; margin-right: 8px;"></i>
+              <strong>贷款利率：</strong>比市场平均水平低30-50%
+            </div>
+            <div>
+              <i class="fas fa-chart-line" style="color: #28a745; margin-right: 8px;"></i>
+              <strong>定价机制：</strong>采取阶梯利率，信用优良者享受最优价格
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  `
+},
+{
+  title: "运营计划",
+  content: `
+    <div style="line-height: 1.8;">
+      <div style="margin-bottom: 25px;">
+        <h4 style="color: var(--primary-color); margin-bottom: 15px;">5.1 运营指标体系</h4>
+        
+        <div style="margin-bottom: 20px;">
+          <h5 style="color: #666; margin-bottom: 10px; border-left: 3px solid var(--primary-color); padding-left: 10px;">1. 核心指标</h5>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+            <div style="background: #e3f2fd; padding: 15px; border-radius: 8px;">
+              <i class="fas fa-users" style="color: #1976d2; margin-right: 8px;"></i>
+              <strong>用户规模：</strong><br>注册用户数、活跃用户数
+            </div>
+            <div style="background: #e8f5e8; padding: 15px; border-radius: 8px;">
+              <i class="fas fa-chart-bar" style="color: #2e7d32; margin-right: 8px;"></i>
+              <strong>交易规模：</strong><br>GMV、贷款余额、笔均金额
+            </div>
+            <div style="background: #fff3e0; padding: 15px; border-radius: 8px;">
+              <i class="fas fa-shield-alt" style="color: #ef6c00; margin-right: 8px;"></i>
+              <strong>资产质量：</strong><br>不良率、逾期率、回收率
+            </div>
+            <div style="background: #f3e5f5; padding: 15px; border-radius: 8px;">
+              <i class="fas fa-user-check" style="color: #7b1fa2; margin-right: 8px;"></i>
+              <strong>用户体验：</strong><br>NPS、申请通过率、放款时效
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h5 style="color: #666; margin-bottom: 10px; border-left: 3px solid var(--primary-color); padding-left: 10px;">2. 运营目标</h5>
+          <div style="border: 1px solid #ddd; border-radius: 8px; overflow: hidden;">
+            <table style="width: 100%; border-collapse: collapse;">
+              <tr style="background-color: #f8f9fa;">
+                <th style="padding: 12px; border: 1px solid #ddd; text-align: center; width: 20%;">时间</th>
+                <th style="padding: 12px; border: 1px solid #ddd; text-align: center; width: 30%;">注册用户</th>
+                <th style="padding: 12px; border: 1px solid #ddd; text-align: center; width: 30%;">放款规模</th>
+                <th style="padding: 12px; border: 1px solid #ddd; text-align: center; width: 20%;">资产质量</th>
+              </tr>
+              <tr>
+                <td style="padding: 12px; border: 1px solid #ddd; text-align: center; font-weight: bold;">第1年</td>
+                <td style="padding: 12px; border: 1px solid #ddd; text-align: center;">10万</td>
+                <td style="padding: 12px; border: 1px solid #ddd; text-align: center;">1亿元</td>
+                <td style="padding: 12px; border: 1px solid #ddd; text-align: center;">不良率 < 1%</td>
+              </tr>
+              <tr>
+                <td style="padding: 12px; border: 1px solid #ddd; text-align: center; font-weight: bold;">第3年</td>
+                <td style="padding: 12px; border: 1px solid #ddd; text-align: center;">100万</td>
+                <td style="padding: 12px; border: 1px solid #ddd; text-align: center;">10亿元</td>
+                <td style="padding: 12px; border: 1px solid #ddd; text-align: center;">实现盈利</td>
+              </tr>
+              <tr>
+                <td style="padding: 12px; border: 1px solid #ddd; text-align: center; font-weight: bold;">第5年</td>
+                <td style="padding: 12px; border: 1px solid #ddd; text-align: center;">500万</td>
+                <td style="padding: 12px; border: 1px solid #ddd; text-align: center;">50亿元</td>
+                <td style="padding: 12px; border: 1px solid #ddd; text-align: center;">市场份额8%</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-bottom: 20px;">
+        <h4 style="color: var(--primary-color); margin-bottom: 15px;">5.2 客户服务</h4>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+          <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; text-align: center;">
+            <i class="fas fa-robot" style="color: var(--primary-color); font-size: 1.5rem; margin-bottom: 8px;"></i>
+            <div><strong>智能客服</strong></div>
+            <div style="font-size: 0.9em; color: #666;">7×24小时在线服务</div>
+          </div>
+          <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; text-align: center;">
+            <i class="fas fa-headset" style="color: var(--primary-color); font-size: 1.5rem; margin-bottom: 8px;"></i>
+            <div><strong>人工客服</strong></div>
+            <div style="font-size: 0.9em; color: #666;">专业金融顾问团队</div>
+          </div>
+          <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; text-align: center;">
+            <i class="fas fa-comment-dots" style="color: var(--primary-color); font-size: 1.5rem; margin-bottom: 8px;"></i>
+            <div><strong>投诉处理</strong></div>
+            <div style="font-size: 0.9em; color: #666;">24小时响应机制</div>
+          </div>
+          <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; text-align: center;">
+            <i class="fas fa-graduation-cap" style="color: var(--primary-color); font-size: 1.5rem; margin-bottom: 8px;"></i>
+            <div><strong>用户教育</strong></div>
+            <div style="font-size: 0.9em; color: #666;">金融知识普及课程</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  `
+},
+{
+  title: "组织与团队",
+  content: `
+    <div style="line-height: 1.8;">
+      <div style="margin-bottom: 15px; padding: 15px; background: #f0f7ff; border-radius: 8px; border-left: 4px solid var(--primary-color);">
+        公司采用扁平化、敏捷的团队结构，以支撑快速迭代的科技金融业务。
+      </div>
+
+      <div style="margin-bottom: 25px;">
+        <h4 style="color: var(--primary-color); margin-bottom: 15px;">6.1 管理团队</h4>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+          <div style="background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 15px;">
+            <div style="color: var(--primary-color); font-weight: bold; margin-bottom: 8px;">首席执行官（CEO）</div>
+            <div style="font-size: 0.9em; color: #666;">负责公司战略、融资和运营</div>
+          </div>
+          <div style="background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 15px;">
+            <div style="color: var(--primary-color); font-weight: bold; margin-bottom: 8px;">首席技术官（CTO）</div>
+            <div style="font-size: 0.9em; color: #666;">领导技术团队，负责区块链底层平台、App和系统架构</div>
+          </div>
+          <div style="background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 15px;">
+            <div style="color: var(--primary-color); font-weight: bold; margin-bottom: 8px;">首席运营官（COO）</div>
+            <div style="font-size: 0.9em; color: #666;">负责市场推广、高校合作、金融机构关系维护和日常运营</div>
+          </div>
+          <div style="background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 15px;">
+            <div style="color: var(--primary-color); font-weight: bold; margin-bottom: 8px;">首席风控官（CRO）</div>
+            <div style="font-size: 0.9em; color: #666;">负责信用模型设计、数据安全、合规与风险管理</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-bottom: 25px;">
+        <h4 style="color: var(--primary-color); margin-bottom: 15px;">6.2 核心部门</h4>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+          <div style="background: #f8f9fa; padding: 15px; border-radius: 8px;">
+            <i class="fas fa-link" style="color: var(--primary-color); margin-right: 8px;"></i>
+            <strong>区块链研发中心</strong>
+            <div style="font-size: 0.9em; color: #666; margin-top: 5px;">专注于核心链技术、智能合约开发与安全</div>
+          </div>
+          <div style="background: #f8f9fa; padding: 15px; border-radius: 8px;">
+            <i class="fas fa-chart-line" style="color: var(--primary-color); margin-right: 8px;"></i>
+            <strong>产品与数据部</strong>
+            <div style="font-size: 0.9em; color: #666; margin-top: 5px;">负责前端App体验、信用评分模型迭代和数据分析</div>
+          </div>
+          <div style="background: #f8f9fa; padding: 15px; border-radius: 8px;">
+            <i class="fas fa-handshake" style="color: var(--primary-color); margin-right: 8px;"></i>
+            <strong>市场商务拓展部</strong>
+            <div style="font-size: 0.9em; color: #666; margin-top: 5px;">设高校合作组、金融机构合作组</div>
+          </div>
+          <div style="background: #f8f9fa; padding: 15px; border-radius: 8px;">
+            <i class="fas fa-shield-alt" style="color: var(--primary-color); margin-right: 8px;"></i>
+            <strong>合规与风险管理部</strong>
+            <div style="font-size: 0.9em; color: #666; margin-top: 5px;">确保所有业务符合金融监管与数据安全法规</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-bottom: 20px;">
+        <h4 style="color: var(--primary-color); margin-bottom: 15px;"6.3 顾问团队</h4>
+        <div style="display: grid; grid-template-columns: 1fr; gap: 15px;">
+          <div style="background: #fff3cd; padding: 15px; border-radius: 8px; border-left: 4px solid #ffc107;">
+            <div style="font-weight: bold; color: #856404; margin-bottom: 5px;">技术顾问</div>
+            <div style="font-size: 0.9em; color: #856404;">
+              主要负责对区块链技术与平台研发进行指导，提出意见建议，拟聘请业内精通云服务、隐私计算、区块链领域的专家学者（以金融科技领域知名校友为来源）
+            </div>
+          </div>
+          <div style="background: #d1ecf1; padding: 15px; border-radius: 8px; border-left: 4px solid #17a2b8;">
+            <div style="font-weight: bold; color: #0c5460; margin-bottom: 5px;">市场顾问</div>
+            <div style="font-size: 0.9em; color: #0c5460;">
+              主要负责高校学生市场开发，拟聘请工商银行相关分行网络金融部总经理、精通大学生群体市场开发的商业高管（以互联网领域知名校友为来源）
+            </div>
+          </div>
+          <div style="background: #d4edda; padding: 15px; border-radius: 8px; border-left: 4px solid #28a745;">
+            <div style="font-weight: bold; color: #155724; margin-bottom: 5px;">法律顾问</div>
+            <div style="font-size: 0.9em; color: #155724;">
+              主要负责公司运转过程中的专利与知识产权管理、商务合同管理、法律法规与监管政策指导，拟聘请知名律所律师（以知名校友为来源）
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  `},
+{
+  title: "7财务预测",
+  content: `
+    <div style="line-height: 1.8;">
+      <div style="margin-bottom: 25px;">
+        <h4 style="color: var(--primary-color); margin-bottom: 15px;">7.1 资金需求与使用计划</h4>
+        <div style="border: 1px solid #ddd; border-radius: 8px; overflow: hidden; margin-bottom: 15px;">
+          <div style="background: #f8f9fa; padding: 10px; text-align: center; font-weight: bold;">
+            表17：资金需求与使用计划
+          </div>
+          <table style="width: 100%; border-collapse: collapse;">
+            <tr style="background-color: #e9ecef;">
+              <th style="padding: 12px; border: 1px solid #ddd; text-align: left; width: 25%;">用途</th>
+              <th style="padding: 12px; border: 1px solid #ddd; text-align: center; width: 20%;">金额(万元)</th>
+              <th style="padding: 12px; border: 1px solid #ddd; text-align: center; width: 15%;">占比</th>
+              <th style="padding: 12px; border: 1px solid #ddd; text-align: left; width: 40%;">详细说明</th>
+            </tr>
+            <tr>
+              <td style="padding: 12px; border: 1px solid #ddd; font-weight: bold;">技术研发</td>
+              <td style="padding: 12px; border: 1px solid #ddd; text-align: center;">200</td>
+              <td style="padding: 12px; border: 1px solid #ddd; text-align: center;">40%</td>
+              <td style="padding: 12px; border: 1px solid #ddd;">区块链开发100万，App60万，安全审计40万</td>
+            </tr>
+            <tr>
+              <td style="padding: 12px; border: 1px solid #ddd; font-weight: bold;">市场推广</td>
+              <td style="padding: 12px; border: 1px solid #ddd; text-align: center;">150</td>
+              <td style="padding: 12px; border: 1px solid #ddd; text-align: center;">30%</td>
+              <td style="padding: 12px; border: 1px solid #ddd;">校园推广80万，数字营销50万，品牌建设20万</td>
+            </tr>
+            <tr>
+              <td style="padding: 12px; border: 1px solid #ddd; font-weight: bold;">团队建设</td>
+              <td style="padding: 12px; border: 1px solid #ddd; text-align: center;">100</td>
+              <td style="padding: 12px; border: 1px solid #ddd; text-align: center;">20%</td>
+              <td style="padding: 12px; border: 1px solid #ddd;">核心技术团队薪酬</td>
+            </tr>
+            <tr>
+              <td style="padding: 12px; border: 1px solid #ddd; font-weight: bold;">运营储备</td>
+              <td style="padding: 12px; border: 1px solid #ddd; text-align: center;">50</td>
+              <td style="padding: 12px; border: 1px solid #ddd; text-align: center;">10%</td>
+              <td style="padding: 12px; border: 1px solid #ddd;">办公室租赁、日常运营等</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <div style="margin-bottom: 25px;">
+        <h4 style="color: var(--primary-color); margin-bottom: 15px;">7.2 收入预测（单位：万元）</h4>
+        <div style="border: 1px solid #ddd; border-radius: 8px; overflow: hidden; margin-bottom: 15px;">
+          <div style="background: #f8f9fa; padding: 10px; text-align: center; font-weight: bold;">
+            表18：未来5年产品收入预测情况
+          </div>
+          <table style="width: 100%; border-collapse: collapse;">
+            <tr style="background-color: #e9ecef;">
+              <th style="padding: 12px; border: 1px solid #ddd; text-align: center; width: 20%;">项目</th>
+              <th style="padding: 12px; border: 1px solid #ddd; text-align: center; width: 16%;">第1年</th>
+              <th style="padding: 12px; border: 1px solid #ddd; text-align: center; width: 16%;">第2年</th>
+              <th style="padding: 12px; border: 1px solid #ddd; text-align: center; width: 16%;">第3年</th>
+              <th style="padding: 12px; border: 1px solid #ddd; text-align: center; width: 16%;">第4年</th>
+              <th style="padding: 12px; border: 1px solid #ddd; text-align: center; width: 16%;">第5年</th>
+            </tr>
+            <tr>
+              <td style="padding: 12px; border: 1px solid #ddd; font-weight: bold;">交易佣金</td>
+              <td style="padding: 12px; border: 1px solid #ddd; text-align: center;">50</td>
+              <td style="padding: 12px; border: 1px solid #ddd; text-align: center;">300</td>
+              <td style="padding: 12px; border: 1px solid #ddd; text-align: center;">1500</td>
+              <td style="padding: 12px; border: 1px solid #ddd; text-align: center;">4000</td>
+              <td style="padding: 12px; border: 1px solid #ddd; text-align: center;">8000</td>
+            </tr>
+            <tr>
+              <td style="padding: 12px; border: 1px solid #ddd; font-weight: bold;">技术服务费</td>
+              <td style="padding: 12px; border: 1px solid #ddd; text-align: center;">20</td>
+              <td style="padding: 12px; border: 1px solid #ddd; text-align: center;">100</td>
+              <td style="padding: 12px; border: 1px solid #ddd; text-align: center;">500</td>
+              <td style="padding: 12px; border: 1px solid #ddd; text-align: center;">1200</td>
+              <td style="padding: 12px; border: 1px solid #ddd; text-align: center;">2500</td>
+            </tr>
+            <tr>
+              <td style="padding: 12px; border: 1px solid #ddd; font-weight: bold;">数据服务费</td>
+              <td style="padding: 12px; border: 1px solid #ddd; text-align: center;">10</td>
+              <td style="padding: 12px; border: 1px solid #ddd; text-align: center;">50</td>
+              <td style="padding: 12px; border: 1px solid #ddd; text-align: center;">200</td>
+              <td style="padding: 12px; border: 1px solid #ddd; text-align: center;">500</td>
+              <td style="padding: 12px; border: 1px solid #ddd; text-align: center;">1000</td>
+            </tr>
+            <tr style="background-color: #f8f9fa;">
+              <td style="padding: 12px; border: 1px solid #ddd; font-weight: bold;">总收入</td>
+              <td style="padding: 12px; border: 1px solid #ddd; text-align: center; font-weight: bold;">80</td>
+              <td style="padding: 12px; border: 1px solid #ddd; text-align: center; font-weight: bold;">450</td>
+              <td style="padding: 12px; border: 1px solid #ddd; text-align: center; font-weight: bold;">2200</td>
+              <td style="padding: 12px; border: 1px solid #ddd; text-align: center; font-weight: bold;">5700</td>
+              <td style="padding: 12px; border: 1px solid #ddd; text-align: center; font-weight: bold;">11500</td>
+            </tr>
+            <tr style="background-color: #e8f5e8;">
+              <td style="padding: 12px; border: 1px solid #ddd; font-weight: bold;">净利润</td>
+              <td style="padding: 12px; border: 1px solid #ddd; text-align: center; color: #dc3545; font-weight: bold;">-420</td>
+              <td style="padding: 12px; border: 1px solid #ddd; text-align: center; color: #dc3545; font-weight: bold;">-150</td>
+              <td style="padding: 12px; border: 1px solid #ddd; text-align: center; color: #28a745; font-weight: bold;">400</td>
+              <td style="padding: 12px; border: 1px solid #ddd; text-align: center; color: #28a745; font-weight: bold;">1800</td>
+              <td style="padding: 12px; border: 1px solid #ddd; text-align: center; color: #28a745; font-weight: bold;">4000</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <div style="margin-bottom: 20px;">
+        <h4 style="color: var(--primary-color); margin-bottom: 15px;">7.3 关键财务假设</h4>
+        <div style="background: #f8f9fa; padding: 20px; border-radius: 8px;">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+            <div style="padding: 12px; background: white; border-radius: 6px;">
+              <i class="fas fa-user-plus" style="color: var(--primary-color); margin-right: 8px;"></i>
+              <strong>用户增长率：</strong>首年100%，次年150%，第三年100%
+            </div>
+            <div style="padding: 12px; background: white; border-radius: 6px;">
+              <i class="fas fa-percentage" style="color: var(--primary-color); margin-right: 8px;"></i>
+              <strong>交易佣金率：</strong>1%，随规模扩大逐步降至0.8%
+            </div>
+            <div style="padding: 12px; background: white; border-radius: 6px;">
+              <i class="fas fa-exclamation-triangle" style="color: var(--primary-color); margin-right: 8px;"></i>
+              <strong>坏账率：</strong>控制在1.5%以内
+            </div>
+            <div style="padding: 12px; background: white; border-radius: 6px;">
+              <i class="fas fa-money-bill-wave" style="color: var(--primary-color); margin-right: 8px;"></i>
+              <strong>获客成本：</strong>首年200元/人，逐年降至80元/人
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  `
+},
+{
+  title: "风险控制",
+  content: `
+    <div style="line-height: 1.8;">
+      <div style="margin-bottom: 25px;">
+        <h4 style="color: var(--primary-color); margin-bottom: 15px;">8.1 风险矩阵</h4>
+        <div style="border: 1px solid #ddd; border-radius: 8px; overflow: hidden; margin-bottom: 15px;">
+          <div style="background: #f8f9fa; padding: 10px; text-align: center; font-weight: bold;">
+            表19：产品主要风险及应对措施
+          </div>
+          <table style="width: 100%; border-collapse: collapse;">
+            <tr style="background-color: #e9ecef;">
+              <th style="padding: 12px; border: 1px solid #ddd; text-align: left; width: 20%;">风险类型</th>
+              <th style="padding: 12px; border: 1px solid #ddd; text-align: center; width: 15%;">发生概率</th>
+              <th style="padding: 12px; border: 1px solid #ddd; text-align: center; width: 15%;">影响程度</th>
+              <th style="padding: 12px; border: 1px solid #ddd; text-align: left; width: 50%;">应对措施</th>
+            </tr>
+            <tr>
+              <td style="padding: 12px; border: 1px solid #ddd; font-weight: bold;">技术风险</td>
+              <td style="padding: 12px; border: 1px solid #ddd; text-align: center; background: #fff3cd;">中</td>
+              <td style="padding: 12px; border: 1px solid #ddd; text-align: center; background: #f8d7da;">高</td>
+              <td style="padding: 12px; border: 1px solid #ddd;">多备份、定期安全审计、漏洞赏金</td>
+            </tr>
+            <tr>
+              <td style="padding: 12px; border: 1px solid #ddd; font-weight: bold;">信用风险</td>
+              <td style="padding: 12px; border: 1px solid #ddd; text-align: center; background: #f8d7da;">高</td>
+              <td style="padding: 12px; border: 1px solid #ddd; text-align: center; background: #f8d7da;">高</td>
+              <td style="padding: 12px; border: 1px solid #ddd;">多维风控模型、风险准备金、保险</td>
+            </tr>
+            <tr>
+              <td style="padding: 12px; border: 1px solid #ddd; font-weight: bold;">监管风险</td>
+              <td style="padding: 12px; border: 1px solid #ddd; text-align: center; background: #fff3cd;">中</td>
+              <td style="padding: 12px; border: 1px solid #ddd; text-align: center; background: #f8d7da;">极高</td>
+              <td style="padding: 12px; border: 1px solid #ddd;">法律顾问团队、监管沙盒试点</td>
+            </tr>
+            <tr>
+              <td style="padding: 12px; border: 1px solid #ddd; font-weight: bold;">操作风险</td>
+              <td style="padding: 12px; border: 1px solid #ddd; text-align: center; background: #fff3cd;">中</td>
+              <td style="padding: 12px; border: 1px solid #ddd; text-align: center; background: #fff3cd;">中</td>
+              <td style="padding: 12px; border: 1px solid #ddd;">标准化流程、员工培训、内部审计</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <div style="margin-bottom: 20px;">
+        <h4 style="color: var(--primary-color); margin-bottom: 15px;">8.2 风控体系</h4>
+        
+        <div style="margin-bottom: 20px;">
+          <h5 style="color: #666; margin-bottom: 10px; border-left: 3px solid #28a745; padding-left: 10px;">1. 贷前风控</h5>
+          <div style="background: #f8f9fa; padding: 15px; border-radius: 8px;">
+            <div style="margin-bottom: 12px;">
+              <i class="fas fa-id-card" style="color: #28a745; margin-right: 8px;"></i>
+              <strong>身份验证：</strong>融合活体检测技术的人脸识别系统，对接教育部实现学籍实时核验，确保申请人身份真实性与在校状态合规性。
+            </div>
+            <div style="margin-bottom: 12px;">
+              <i class="fas fa-chart-line" style="color: #28a745; margin-right: 8px;"></i>
+              <strong>信用评估：</strong>构建涵盖教育背景、消费习惯、社交行为等500+维度的动态评分模型，运用机器学习算法持续优化权重，精准识别信用风险等级。
+            </div>
+            <div>
+              <i class="fas fa-shield-alt" style="color: #28a745; margin-right: 8px;"></i>
+              <strong>反欺诈：</strong>通过设备指纹技术锁定终端唯一性，结合行为轨迹时序分析与社交关系图谱建模，有效识别团伙欺诈、身份冒用等风险场景。
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-bottom: 20px;">
+          <h5 style="color: #666; margin-bottom: 10px; border-left: 3px solid #ffc107; padding-left: 10px;">2. 贷中风控</h5>
+          <div style="background: #f8f9fa; padding: 15px; border-radius: 8px;">
+            <div style="margin-bottom: 12px;">
+              <i class="fas fa-wallet" style="color: #ffc107; margin-right: 8px;"></i>
+              <strong>额度管理：</strong>基于实时交易数据、还款记录及外部征信变化，通过智能决策引擎实现授信额度的动态调增调减，保障用户合理信贷需求，并防控过度授信风险。
+            </div>
+            <div style="margin-bottom: 12px;">
+              <i class="fas fa-eye" style="color: #ffc107; margin-right: 8px;"></i>
+              <strong>行为监控：</strong>部署实时交易预警系统，设定交易频次、地域跨度、消费类型等多维度风险阈值，对异常交易触发分级预警机制并联动账户冻结等控制措施。
+            </div>
+            <div>
+              <i class="fas fa-sync-alt" style="color: #ffc107; margin-right: 8px;"></i>
+              <strong>信息更新：</strong>建立月度信用画像迭代机制，整合电商消费、公共事业缴费等多源数据，持续更新用户偿债能力与信用意愿评估模型。
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h5 style="color: #666; margin-bottom: 10px; border-left: 3px solid #dc3545; padding-left: 10px;">3. 贷后风控</h5>
+          <div style="background: #f8f9fa; padding: 15px; border-radius: 8px;">
+            <div style="margin-bottom: 12px;">
+              <i class="fas fa-robot" style="color: #dc3545; margin-right: 8px;"></i>
+              <strong>智能催收：</strong>依托AI算法和数据中心，自动收集客户特征信息，通过客户画像分析生成实时案件图谱和评分，进行针对性沟通以促成还款。
+            </div>
+            <div style="margin-bottom: 12px;">
+              <i class="fas fa-gavel" style="color: #dc3545; margin-right: 8px;"></i>
+              <strong>资产处置：</strong>搭建多元化不良资产处理通道，与持牌AMC机构建立债权转让快速通道，同时联动专业律所启动批量诉讼程序，通过网络查控系统实现资产快速执行。
+            </div>
+            <div>
+              <i class="fas fa-heart" style="color: #dc3545; margin-right: 8px;"></i>
+              <strong>信用修复：</strong>设计正向激励机制，对完成逾期还款的用户开放信用报告异议申诉绿色通道，提供账单分期、信用提升培训等配套服务，帮助用户逐步恢复信用评级。
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  `
+},
+{
+  title: "9融资计划",
+  content: `
+    <div style="line-height: 1.8;">
+      <div style="margin-bottom: 25px;">
+        <h4 style="color: var(--primary-color); margin-bottom: 15px;">9.1 融资方案</h4>
+        <div style="background: #f0f7ff; padding: 20px; border-radius: 8px; border-left: 4px solid var(--primary-color);">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <div style="text-align: center;">
+              <div style="font-size: 2rem; color: var(--primary-color); font-weight: bold;">500</div>
+              <div style="color: #666;">万元人民币</div>
+              <div style="font-size: 0.9em; margin-top: 5px;">融资额度</div>
+            </div>
+            <div style="text-align: center;">
+              <div style="font-size: 2rem; color: var(--primary-color); font-weight: bold;">10%</div>
+              <div style="color: #666;">出让股权</div>
+              <div style="font-size: 0.9em; margin-top: 5px;">股权比例</div>
+            </div>
+          </div>
+          <div style="margin-top: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+            <div style="background: white; padding: 15px; border-radius: 6px;">
+              <i class="fas fa-clock" style="color: var(--primary-color); margin-right: 8px;"></i>
+              <strong>资金使用周期：</strong>18-24个月
+            </div>
+            <div style="background: white; padding: 15px; border-radius: 6px;">
+              <i class="fas fa-chart-line" style="color: var(--primary-color); margin-right: 8px;"></i>
+              <strong>预期下一轮融资：</strong>A轮2000万元（投后估值2亿元）
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-bottom: 25px;">
+        <h4 style="color: var(--primary-color); margin-bottom: 15px;">9.2 退出机制</h4>
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px;">
+          <div style="background: #fff3cd; padding: 20px; border-radius: 8px; text-align: center;">
+            <i class="fas fa-handshake" style="color: #ffc107; font-size: 2rem; margin-bottom: 10px;"></i>
+            <div style="font-weight: bold; color: #856404; margin-bottom: 8px;">战略收购</div>
+            <div style="font-size: 0.9em; color: #856404;">3-5年内被大型金融机构或科技公司收购</div>
+          </div>
+          <div style="background: #d1ecf1; padding: 20px; border-radius: 8px; text-align: center;">
+            <i class="fas fa-building" style="color: #17a2b8; font-size: 2rem; margin-bottom: 10px;"></i>
+            <div style="font-weight: bold; color: #0c5460; margin-bottom: 8px;">独立上市</div>
+            <div style="font-size: 0.9em; color: #0c5460;">5-7年内在科创板或港股上市</div>
+          </div>
+          <div style="background: #d4edda; padding: 20px; border-radius: 8px; text-align: center;">
+            <i class="fas fa-exchange-alt" style="color: #28a745; font-size: 2rem; margin-bottom: 10px;"></i>
+            <div style="font-weight: bold; color: #155724; margin-bottom: 8px;">股权转让</div>
+            <div style="font-size: 0.9em; color: #155724;">向后续投资方或战略投资者转让股权</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="background: #e8f4fd; padding: 15px; border-radius: 8px; border-left: 4px solid var(--primary-color);">
+        <strong>投资亮点：</strong>基于区块链技术的创新教育金融模式，拥有巨大的市场潜力和技术壁垒，团队具备丰富的行业经验和执行力，预期投资回报率可观。
+      </div>
+    </div>
+  `
+},
+{
+  title: "激励与考核",
+  content: `
+    <div style="line-height: 1.8;">
+      <div style="margin-bottom: 25px;">
+        <h4 style="color: var(--primary-color); margin-bottom: 15px;">10.1 团队激励</h4>
+        <div style="background: #f0f7ff; padding: 20px; border-radius: 8px; border-left: 4px solid var(--primary-color);">
+          <div style="display: flex; align-items: center; margin-bottom: 15px;">
+            <i class="fas fa-award" style="color: var(--primary-color); font-size: 1.5rem; margin-right: 15px;"></i>
+            <div>
+              <strong>实施"工资+绩效+股权期权"的复合薪酬包</strong>
+              <div style="color: #666; margin-top: 5px;">早期核心成员将获得具有吸引力的期权计划，使其与公司长期利益深度绑定</div>
+            </div>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; text-align: center;">
+            <div style="background: white; padding: 15px; border-radius: 6px;">
+              <div style="font-weight: bold; color: var(--primary-color);">工资</div>
+              <div style="font-size: 0.9em; color: #666;">有竞争力的基础薪酬</div>
+            </div>
+            <div style="background: white; padding: 15px; border-radius: 6px;">
+              <div style="font-weight: bold; color: var(--primary-color);">绩效</div>
+              <div style="font-size: 0.9em; color: #666;">基于KPI的浮动奖金</div>
+            </div>
+            <div style="background: white; padding: 15px; border-radius: 6px;">
+              <div style="font-weight: bold; color: var(--primary-color);">股权期权</div>
+              <div style="font-size: 0.9em; color: #666;">长期价值共享机制</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-bottom: 25px;">
+        <h4 style="color: var(--primary-color); margin-bottom: 15px;">10.2 各部门KPI考核</h4>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+          <div style="background: #f8f9fa; padding: 15px; border-radius: 8px;">
+            <i class="fas fa-laptop-code" style="color: var(--primary-color); margin-right: 8px;"></i>
+            <strong>技术团队</strong>
+            <div style="font-size: 0.9em; color: #666; margin-top: 8px;">
+              系统稳定性（99.9%以上）、安全事故数、产品迭代速度
+            </div>
+          </div>
+          <div style="background: #f8f9fa; padding: 15px; border-radius: 8px;">
+            <i class="fas fa-chart-line" style="color: var(--primary-color); margin-right: 8px;"></i>
+            <strong>市场与商务团队</strong>
+            <div style="font-size: 0.9em; color: #666; margin-top: 8px;">
+              高校接入数量、金融机构合作伙伴数量、用户增长数、平台交易总额（GMV）
+            </div>
+          </div>
+          <div style="background: #f8f9fa; padding: 15px; border-radius: 8px;">
+            <i class="fas fa-cogs" style="color: var(--primary-color); margin-right: 8px;"></i>
+            <strong>运营团队</strong>
+            <div style="font-size: 0.9em; color: #666; margin-top: 8px;">
+              用户活跃度、客户满意度、贷后不良率
+            </div>
+          </div>
+          <div style="background: #f8f9fa; padding: 15px; border-radius: 8px;">
+            <i class="fas fa-shield-alt" style="color: var(--primary-color); margin-right: 8px;"></i>
+            <strong>风控团队</strong>
+            <div style="font-size: 0.9em; color: #666; margin-top: 8px;">
+              全平台坏账率、信用模型准确率、合规审查通过率
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-bottom: 20px;">
+        <h4 style="color: var(--primary-color); margin-bottom: 15px;">10.3 生态激励</h4>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+          <div style="background: #e8f5e8; padding: 20px; border-radius: 8px; text-align: center;">
+            <i class="fas fa-university" style="color: #28a745; font-size: 1.5rem; margin-bottom: 10px;"></i>
+            <div style="font-weight: bold; color: #155724; margin-bottom: 8px;">高校合作方</div>
+            <div style="font-size: 0.9em; color: #155724;">
+              "联合科研基金"和"人才培养数据分析报告"
+            </div>
+          </div>
+          <div style="background: #e3f2fd; padding: 20px; border-radius: 8px; text-align: center;">
+            <i class="fas fa-landmark" style="color: #1976d2; font-size: 1.5rem; margin-bottom: 10px;"></i>
+            <div style="font-weight: bold; color: #0d47a1; margin-bottom: 8px;">金融机构</div>
+            <div style="font-size: 0.9em; color: #0d47a1;">
+              "精准客户引流补贴"和"联合品牌宣传"
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="background: #e8f4fd; padding: 15px; border-radius: 8px; border-left: 4px solid var(--primary-color);">
+        <strong>激励理念：</strong>通过多层次、多维度的激励体系，实现员工、合作伙伴与公司发展的共赢，构建可持续发展的商业生态系统。
+      </div>
+    </div>
+  `}
+];
+ 
+
+// 页面加载后执行所有逻辑
+document.addEventListener("DOMContentLoaded", function() {
+
+  // ======== 弹窗页逻辑（了解更多按钮 + 翻页） ========
+  const modal = document.getElementById("modal");
+  const btn = document.getElementById("learn-more");
+  const span = document.querySelector(".close");
+  const modalTitle = document.getElementById("modal-title");
+  const pageContent = document.getElementById("page-content");
+  const prevBtn = document.getElementById("prev-btn");
+  const nextBtn = document.getElementById("next-btn");
+  const pageIndicator = document.getElementById("page-indicator");
+
+  let currentPage = 0;
+
+  function initPageIndicator() {
+    pageIndicator.innerHTML = '';
+    for (let i = 0; i < pages.length; i++) {
+      const dot = document.createElement('div');
+      dot.className = 'page-dot';
+      if (i === currentPage) dot.classList.add('active');
+      dot.addEventListener('click', () => goToPage(i));
+      pageIndicator.appendChild(dot);
     }
+  }
+
+  function updatePageContent() {
+    const page = pages[currentPage];
+    modalTitle.textContent = page.title;
+    pageContent.innerHTML = page.content;
+    prevBtn.disabled = currentPage === 0;
+    nextBtn.disabled = currentPage === pages.length - 1;
+    document.querySelectorAll('.page-dot').forEach((dot, i) => {
+      dot.classList.toggle('active', i === currentPage);
+    });
+  }
+
+  function goToPage(i) {
+    if (i >= 0 && i < pages.length) {
+      currentPage = i;
+      updatePageContent();
+    }
+  }
+
+  if (btn) {
+    btn.addEventListener('click', () => {
+      modal.style.display = "block";
+      currentPage = 0;
+      initPageIndicator();
+      updatePageContent();
+    });
+  }
+
+  span.addEventListener('click', () => modal.style.display = "none");
+  window.addEventListener('click', e => {
+    if (e.target === modal) modal.style.display = "none";
+  });
+  prevBtn.addEventListener('click', () => goToPage(currentPage - 1));
+  nextBtn.addEventListener('click', () => goToPage(currentPage + 1));
+
+const aboutPages = [{
+    title: "项目团队",
+    content: `
+        <div class="team-member">
+            <h4>陈钰桐</h4>
+            <div class="member-info">
+                <p>大连理工大学过程装备与控制工程专业2025级本科生，项目发起人，负责项目整体设计和团队组织。</p>
+                <div class="achievements">
+                    <p>曾获第20届"外研社杯"全国中学生外语素养大赛北京地区决赛二等奖；2024年2月获得厦门大学经济学科优秀中学生冬令营"优秀营员"；2023年7月参加上海交大心理学学术夏令营，独立发表《学前儿童性格养成：基于外界条件影响自发游戏的干预建议》论文；2023年8月在清华大学夏令营，完成《走近村民：金融服务与乡村振兴》研究项目。</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="team-member">
+            <h4>李丁洋</h4>
+            <div class="member-info">
+                <p>大连理工大学过程装备与控制工程专业2025级本科生，项目组成员，在项目中负责业务方案设计。</p>
+                <div class="achievements">
+                    <p>中学阶段担任学校纪检委、校紫荆篮球社社长，完成小国冲突中的大国博弈、人际关系对学习投入的影响机制研究课题。</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="team-member">
+            <h4>江 超</h4>
+            <div class="member-info">
+                <p>大连理工大学商学院，数字经济学域2025级本科生，项目组成员，在项目中负责网站设计与经济学模型构建。</p>
+                <div class="achievements">
+                    <p>熟悉 Python、HTML、JavaScript、C/C++。曾获数竞省三，发表过《对过氧化钠颜色的研究》，撰写过《高等数学讲义附录勘误》《共鹤轩诗词选》。</p>
+                </div>
+            </div>
+        </div>
+    `
+},
+{
+    title: "项目导师", 
+    content: `
+        <div class="team-member">
+            <h4>王建军</h4>
+            <div class="member-info">
+                <p>博士，大连理工大学经济管理学院教授、博士生导师；美国佐治亚州立大学（Georgia State University）商学院访问学者、美国东卡罗来纳州立大学(East Carolina University)商学院博士后；香港大学访问学者；辽宁省优秀研究生导师，大连市"高端人才"，教育部"新世纪优秀人才支持计划"和辽宁省"百千万人才工程"，大连理工大学留学生优秀导师。</p>
+                <div class="achievements">
+                    <p>国家创新群体成员，教育部创新团队成员。主持国家自然科学基金项目4项，其它省部级项目7项。</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="team-member">
+            <h4>石 丹</h4>
+            <div class="member-info">
+                <p>博士，大连理工大学商学院副教授，硕士生导师。主要从事电子商务与平台治理、绿色供应链、供应链金融等领域的研究工作。</p>
+                <div class="achievements">
+                    <p>在《International Journal of Production Economics》等SCI/SSCI检索期刊，以及《南开管理评论》、《系统工程理论与实践》等国内核心期刊发表学术论文20余篇。主持国家自然科学基金1项，参与国家社科基金重大项目、国家自然科学基金项目等项目15项，兼任多本SCI/SSCI索引期刊及国内核心期刊审稿人。</p>
+                </div>
+            </div>
+        </div>
+    `
+}];
+  
+  // 创建关于我们弹窗
+  const aboutModal = document.createElement('div');
+  aboutModal.className = 'modal';
+  aboutModal.id = 'about-modal';
+  aboutModal.innerHTML = `
+    <div class="modal-content">
+      <span class="close" id="about-close">&times;</span>
+      <h2 id="about-modal-title">关于我们</h2>
+      
+      <div class="page-content" id="about-page-content">
+        <!-- 页面内容将通过JavaScript动态填充 -->
+      </div>
+      
+      <div class="page-controls">
+        <button class="page-btn" id="about-prev-btn">上一页</button>
+        
+        <div class="page-indicator" id="about-page-indicator">
+          <!-- 页码指示器将通过JavaScript动态生成 -->
+        </div>
+        
+        <button class="page-btn" id="about-next-btn">下一页</button>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(aboutModal);
+
+  // 关于我们弹窗变量
+  let aboutCurrentPage = 0;
+
+  // 初始化关于我们页码指示器
+  function initAboutPageIndicator() {
+    const aboutPageIndicator = document.getElementById('about-page-indicator');
+    aboutPageIndicator.innerHTML = '';
+    for (let i = 0; i < aboutPages.length; i++) {
+      const dot = document.createElement('div');
+      dot.className = 'page-dot';
+      if (i === aboutCurrentPage) dot.classList.add('active');
+      dot.addEventListener('click', () => aboutGoToPage(i));
+      aboutPageIndicator.appendChild(dot);
+    }
+  }
+
+  // 更新关于我们页面内容
+  function updateAboutPageContent() {
+    const page = aboutPages[aboutCurrentPage];
+    document.getElementById('about-modal-title').textContent = page.title;
+    document.getElementById('about-page-content').innerHTML = page.content;
+    document.getElementById('about-prev-btn').disabled = aboutCurrentPage === 0;
+    document.getElementById('about-next-btn').disabled = aboutCurrentPage === aboutPages.length - 1;
+    
+    // 更新指示器
+    document.querySelectorAll('#about-page-indicator .page-dot').forEach((dot, i) => {
+      dot.classList.toggle('active', i === aboutCurrentPage);
+    });
+  }
+
+  // 跳转到关于我们指定页面
+  function aboutGoToPage(i) {
+    if (i >= 0 && i < aboutPages.length) {
+      aboutCurrentPage = i;
+      updateAboutPageContent();
+    }
+  }
+
+  // 关于我们弹窗事件绑定
+  document.getElementById('about-close').addEventListener('click', () => {
+    document.getElementById('about-modal').style.display = "none";
+  });
+
+  document.getElementById('about-prev-btn').addEventListener('click', () => aboutGoToPage(aboutCurrentPage - 1));
+  document.getElementById('about-next-btn').addEventListener('click', () => aboutGoToPage(aboutCurrentPage + 1));
+
+  // 点击关于我们链接打开弹窗
+  document.querySelector('a[href="https://youke1.picui.cn/s1/2025/10/19/68f46a9ef23cd.png"]').addEventListener('click', function(e) {
+    e.preventDefault();
+    aboutCurrentPage = 0;
+    initAboutPageIndicator();
+    updateAboutPageContent();
+    document.getElementById('about-modal').style.display = "block";
+  });
+
+  // 点击关于我们弹窗外部关闭
+  window.addEventListener('click', e => {
+    if (e.target === document.getElementById('about-modal')) {
+      document.getElementById('about-modal').style.display = "none";
+    }
+  });
+  // ======== 自定义提示框 ========
+  function showCustomAlert(message) {
+    const overlay = document.getElementById('customAlertOverlay');
+    const alertBox = document.getElementById('customAlert');
+    const alertContent = document.getElementById('customAlertContent');
+    const closeBtn = document.getElementById('customAlertClose');
+    alertContent.textContent = message;
+    overlay.style.display = 'block';
+    alertBox.style.display = 'block';
+    closeBtn.onclick = overlay.onclick = () => {
+      overlay.style.display = 'none';
+      alertBox.style.display = 'none';
+    };
+  }
+
+  // ======== 卫星节点点击事件 ========
+  document.querySelectorAll('.satellite-node').forEach(node => {
+    node.style.cursor = 'pointer';
+    node.addEventListener('click', () => {
+      const title = node.querySelector('.node-title').innerText;
+      showCustomAlert(`${title} 节点：区块链网络中的重要参与者，负责信息交互与验证。`);
+    });
+  });
+
+  // ======== 金融申请 Tabs ========
+  const tabLinks = document.querySelectorAll('.application-tab-link');
+  const tabPanes = document.querySelectorAll('.application-tab-pane');
+
+  tabLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      const targetId = link.dataset.tab;
+      tabLinks.forEach(l => l.classList.remove('active'));
+      tabPanes.forEach(p => p.classList.remove('active'));
+      link.classList.add('active');
+      document.getElementById(targetId).classList.add('active');
+    });
+  });
+
+  // ======== 文件上传文件名显示 ========
+  document.querySelectorAll('input[type="file"]').forEach(fileInput => {
+    fileInput.addEventListener('change', function() {
+      const spanId = this.id.replace('-upload', '-name');
+      const span = document.getElementById(spanId);
+      span.textContent = this.files.length ? '已选择文件: ' + this.files[0].name : '';
+    });
+  });
+
+  // ======== 表单提交统一提示 ========
+  document.querySelectorAll('form').forEach(form => {
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      alert('申请已提交，我们将在1-3个工作日内审核您的信息！');
+    });
+  });
+
+  // ======== “立即体验”滚动到申请区 ========
+  document.getElementById('hero-cta').addEventListener('click', () => {
+    document.getElementById('loan-application').scrollIntoView({ behavior: 'smooth' });
+  });
+
+  // ======== 平滑滚动导航 ========
+  document.querySelectorAll('.nav-links a[href^="#"]').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const id = link.getAttribute('href').substring(1);
+      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+
 });
-        // 导航栏滚动效果
-        window.addEventListener('scroll', function() {
-            const header = document.getElementById('header');
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
+</script>
 
-        // 表单提交处理
-        document.getElementById('loan-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('申请已提交，我们将在1-3个工作日内审核您的信息！');
-        });
-
-        // 移动端菜单切换
-        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
-            alert('移动端菜单功能将在后续版本中实现');
-        });
-
-        // 自定义弹窗函数
-        function showCustomAlert(message) {
-            const overlay = document.getElementById('customAlertOverlay');
-            const alertBox = document.getElementById('customAlert');
-            const alertContent = document.getElementById('customAlertContent');
-            const closeBtn = document.getElementById('customAlertClose');
-            
-            alertContent.textContent = message;
-            overlay.style.display = 'block';
-            alertBox.style.display = 'block';
-            
-            // 关闭弹窗
-            closeBtn.onclick = function() {
-                overlay.style.display = 'none';
-                alertBox.style.display = 'none';
-            };
-            
-            // 点击遮罩层也可以关闭
-            overlay.onclick = function() {
-                overlay.style.display = 'none';
-                alertBox.style.display = 'none';
-            };
-        }
-
-        // 节点交互效果 - 使用自定义居中弹窗
-        document.querySelectorAll('.satellite-node').forEach(node => {
-            node.addEventListener('click', function() {
-                const nodeType = this.querySelector('i').className;
-                let message = '';
-                
-                if (nodeType.includes('university')) {
-                    message = '教育机构节点：验证学生学籍信息';
-                } else if (nodeType.includes('landmark')) {
-                    message = '金融机构节点：提供资金支持';
-                } else if (nodeType.includes('user-graduate')) {
-                    message = '学生节点：申请金融服务';
-                } else if (nodeType.includes('chart-line')) {
-                    message = '监管机构节点：确保合规透明';
-                }
-                
-                showCustomAlert(message);
-            });
-        });
-
-        // 滚动动画
-        function checkScroll() {
-            const elements = document.querySelectorAll('.fade-in-up');
-            elements.forEach(element => {
-                const elementTop = element.getBoundingClientRect().top;
-                const windowHeight = window.innerHeight;
-                
-                if (elementTop < windowHeight - 100) {
-                    element.style.opacity = 1;
-                    element.style.transform = 'translateY(0)';
-                }
-            });
-        }
-
-        // 初始检查
-        window.addEventListener('load', checkScroll);
-        window.addEventListener('scroll', checkScroll);
-
-        // 绘制连接线条
-        function drawConnectionLines() {
-            const svg = document.getElementById('connectionLines');
-            const container = document.querySelector('.node-network');
-            const centralNode = document.querySelector('.central-node');
-            
-            // 清除现有线条
-            svg.innerHTML = '';
-            
-            // 获取中心节点位置
-            const containerRect = container.getBoundingClientRect();
-            const centralRect = centralNode.getBoundingClientRect();
-            
-            const centralX = centralRect.left - containerRect.left + centralRect.width / 2;
-            const centralY = centralRect.top - containerRect.top + centralRect.height / 2;
-            
-            // 获取所有卫星节点
-            const satelliteNodes = document.querySelectorAll('.satellite-node');
-            
-            // 为每个卫星节点绘制连接线
-            satelliteNodes.forEach(node => {
-                const nodeRect = node.getBoundingClientRect();
-                const nodeX = nodeRect.left - containerRect.left + nodeRect.width / 2;
-                const nodeY = nodeRect.top - containerRect.top + nodeRect.height / 2;
-                
-                // 创建线条元素
-                const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-                line.setAttribute('x1', centralX);
-                line.setAttribute('y1', centralY);
-                line.setAttribute('x2', nodeX);
-                line.setAttribute('y2', nodeY);
-                line.setAttribute('class', 'connection-line');
-                
-                // 添加到SVG
-                svg.appendChild(line);
-            });
-        }
-
-        // 初始绘制连接线
-        window.addEventListener('load', drawConnectionLines);
-        window.addEventListener('resize', drawConnectionLines);
-
-        // 添加"立即体验"按钮跳转到金融申请的功能
-        document.getElementById('hero-cta').addEventListener('click', function() {
-            document.getElementById('loan-application').scrollIntoView({ 
-                behavior: 'smooth' 
-            });
-        });
-
-        // 平滑滚动到目标区块
-        function scrollToSection(sectionId) {
-            document.getElementById(sectionId).scrollIntoView({ 
-                behavior: 'smooth' 
-            });
-        }
-
-        // 为所有导航栏内链接添加平滑滚动
-        document.querySelectorAll('.nav-links a[href^="#"]').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href').substring(1);
-                scrollToSection(targetId);
-            });
-        });
     </script>
 </body>
 </html>
