@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>学信链融</title>
+<title>区块链学信学生创业融资平台 V7.1</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
         /* 所有CSS样式保持不变 */
@@ -1447,76 +1447,88 @@
             </div>
             
             <!-- 助学贷款Tab -->
-            <div id="education" class="application-tab-pane active">
-                <form id="education-form">
-                    <div class="form-grid">
-                        <div class="form-group">
-                            <label for="edu-name" class="form-label">姓名</label>
-                            <input type="text" id="edu-name" class="form-input" placeholder="请输入您的姓名" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="edu-id" class="form-label">身份证号</label>
-                            <input type="text" id="edu-id" class="form-input" placeholder="请输入身份证号码" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="edu-school" class="form-label">学校名称</label>
-                            <input type="text" id="edu-school" class="form-input" placeholder="请输入就读学校" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="edu-major" class="form-label">专业</label>
-                            <input type="text" id="edu-major" class="form-input" placeholder="请输入所学专业" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="edu-grade" class="form-label">年级</label>
-                            <select id="edu-grade" class="form-select" required>
-                                <option value="">请选择年级</option>
-                                <option value="freshman">大一</option>
-                                <option value="sophomore">大二</option>
-                                <option value="junior">大三</option>
-                                <option value="senior">大四</option>
-                                <option value="graduate">研究生</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="edu-tuition" class="form-label">学费金额 (元)</label>
-                            <input type="number" id="edu-tuition" class="form-input" placeholder="请输入学费金额" min="1000" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="edu-semester" class="form-label">学期数</label>
-                            <select id="edu-semester" class="form-select" required>
-                                <option value="">请选择学期</option>
-                                <option value="1">1学期</option>
-                                <option value="2">2学期</option>
-                                <option value="4">4学期</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="edu-amount" class="form-label">申请金额 (元)</label>
-                            <input type="number" id="edu-amount" class="form-input" placeholder="请输入申请金额" min="1000" step="1000" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="edu-duration" class="form-label">贷款期限 (月)</label>
-                            <select id="edu-duration" class="form-select" required>
-                                <option value="">请选择期限</option>
-                                <option value="6">12个月</option>
-                                <option value="12">48个月</option>
-                                <option value="24">96个月</option>
-                                <option value="36">120个月</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group full-width">
-                            <label for="edu-purpose" class="form-label">资金用途说明</label>
-                            <textarea id="edu-purpose" class="form-textarea" placeholder="请详细描述您的资金用途..." required></textarea>
-                        </div>
+<div id="education" class="application-tab-pane active">
+    <form id="education-form">
+        <div class="form-grid">
+            <div class="form-group">
+                <label for="edu-name" class="form-label">姓名</label>
+                <input type="text" id="edu-name" class="form-input" placeholder="请输入您的姓名" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="edu-id" class="form-label">身份证号</label>
+                <input type="text" id="edu-id" class="form-input" placeholder="请输入身份证号码" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="edu-school" class="form-label">学校名称</label>
+                <input type="text" id="edu-school" class="form-input" placeholder="请输入就读学校" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="edu-major" class="form-label">专业</label>
+                <input type="text" id="edu-major" class="form-input" placeholder="请输入所学专业" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="edu-grade" class="form-label">年级</label>
+                <select id="edu-grade" class="form-select" required>
+                    <option value="">请选择年级</option>
+                    <option value="freshman">大一</option>
+                    <option value="sophomore">大二</option>
+                    <option value="junior">大三</option>
+                    <option value="senior">大四</option>
+                    <option value="graduate">研究生</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="edu-tuition" class="form-label">学费金额 (元)</label>
+                <input type="number" id="edu-tuition" class="form-input" placeholder="请输入学费金额" min="1000" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="edu-semester" class="form-label">学期数</label>
+                <select id="edu-semester" class="form-select" required>
+                    <option value="">请选择学期</option>
+                    <option value="1">1学期</option>
+                    <option value="2">2学期</option>
+                    <option value="4">4学期</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="edu-amount" class="form-label">申请金额 (元)</label>
+                <input type="number" id="edu-amount" class="form-input" placeholder="请输入申请金额" min="1000" step="1000" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="edu-duration" class="form-label">贷款期限 (月)</label>
+                <select id="edu-duration" class="form-select" required>
+                    <option value="">请选择期限</option>
+                    <option value="6">12个月</option>
+                    <option value="12">48个月</option>
+                    <option value="24">96个月</option>
+                    <option value="36">120个月</option>
+                </select>
+            </div>
+            
+            <!-- 新增资金用途说明选项 -->
+            <div class="form-group">
+                <label for="edu-purpose-type" class="form-label">资金用途说明</label>
+                <select id="edu-purpose-type" class="form-select" required>
+                    <option value="">请选择资金用途</option>
+                    <option value="tuition">学费</option>
+                    <option value="accommodation">住宿费</option>
+                    <option value="living">生活费</option>
+                    <option value="all">三者皆有</option>
+                </select>
+            </div>
+            
+            <div class="form-group full-width">
+                <label for="edu-purpose" class="form-label">具体用途与金额测算</label>
+                <textarea id="edu-purpose" class="form-textarea" placeholder="请详细描述您的资金用途..." required></textarea>
+            </div>
                         
                         <!-- 文件上传区 -->
                         <div class="form-group full-width">
@@ -1745,6 +1757,33 @@
         </div>
     </div>
 </section>
+<!-- 数据仪表盘 -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title fade-in-up">
+                <h2>平台数据概览</h2>
+                <p>实时展示平台运营数据，透明可信</p>
+            </div>
+            <div class="dashboard">
+                <div class="data-card fade-in-up delay-1">
+                    <div class="data-value">5,280</div>
+                    <div class="data-label">已发放贷款笔数</div>
+                </div>
+                <div class="data-card fade-in-up delay-2">
+                    <div class="data-value">712</div>
+                    <div class="data-label">平均信用分数</div>
+                </div>
+                <div class="data-card fade-in-up delay-3">
+                    <div class="data-value">4.8%</div>
+                    <div class="data-label">平均利率</div>
+                </div>
+                <div class="data-card fade-in-up delay-4">
+                    <div class="data-value">98.5%</div>
+                    <div class="data-label">还款完成率</div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- 页脚 -->
     <footer>
