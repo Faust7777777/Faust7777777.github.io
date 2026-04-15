@@ -1904,7 +1904,7 @@
                 <a href="#loan-application">助学服务</a>
                 <a href="#loan-application">消费金融</a>
                 <a href="#loan-application">创业融资</a>
-                 <a href="https://youke1.picui.cn/s1/2025/10/19/68f46a9ef23cd.png">关于我们</a>
+                 <a href="javascript:void(0)" id="about-link">关于我们</a>
             </div>
 
             <!-- 右侧搜索栏 -->
@@ -2436,7 +2436,7 @@
                         <!-- 文件上传区 -->
                         <div class="form-group full-width">
                             <div class="file-upload">
-                               <a href="https://youke1.picui.cn/s1/2025/10/12/68eb180be7bb1.png" download="资信表.png" class="btn btn-secondary">
+                               <a href="zixinbiao.png" download="资信表.png" class="btn btn-secondary">
                                     <i class="fas fa-download"></i> 下载资信表
                                 </a>
                                 <div style="flex: 1; display: flex; align-items: center;">
@@ -2540,7 +2540,7 @@
                         <!-- 文件上传区 -->
                         <div class="form-group full-width">
                             <div class="file-upload">
-                            <a href="https://youke1.picui.cn/s1/2025/10/12/68eb180be7bb1.png" download="资信表.png" class="btn btn-secondary">
+                            <a href="zixinbiao.png" download="资信表.png" class="btn btn-secondary">
                                     <i class="fas fa-download"></i> 下载资信表
                                 </a>
                                 <div style="flex: 1; display: flex; align-items: center;">
@@ -2635,7 +2635,7 @@
                 <div>
                     <h3 class="footer-heading">关于我们</h3>
                     <ul class="footer-links">
-                        <li><a href="#">了解更多</a></li>
+                        <li><a href="javascript:void(0)" id="footer-learn-more">了解更多</a></li>
                         <li><a href="#">团队介绍</a></li>
                         <li><a href="https://wap.icbc.com.cn/icbc/%E5%B7%A5%E8%A1%8C%E5%8A%A8%E6%80%81/default1.htm">新闻动态</a></li>
                         <li><a href="#">招贤纳士</a></li>
@@ -3698,13 +3698,16 @@ initMobileSite();
 mobileBreakpoint.addEventListener('change', setMobileMode);
 
 // ======== 页脚"了解更多"链接点击事件 ========
-document.querySelector('footer a[href="#"]').addEventListener('click', function(e) {
-    e.preventDefault();
-    modal.style.display = "block";
-    currentPage = 0;
-    initPageIndicator();
-    updatePageContent();
-});
+const footerLearnMoreLink = document.getElementById('footer-learn-more');
+if (footerLearnMoreLink) {
+    footerLearnMoreLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        modal.style.display = "block";
+        currentPage = 0;
+        initPageIndicator();
+        updatePageContent();
+    });
+}
   // ======== 弹窗页逻辑（了解更多按钮 + 翻页） ========
   const modal = document.getElementById("modal");
   const btn = document.getElementById("learn-more");
@@ -3905,13 +3908,16 @@ const aboutPages = [{
   document.getElementById('about-next-btn').addEventListener('click', () => aboutGoToPage(aboutCurrentPage + 1));
 
   // 点击关于我们链接打开弹窗
-  document.querySelector('a[href="https://youke1.picui.cn/s1/2025/10/19/68f46a9ef23cd.png"]').addEventListener('click', function(e) {
-    e.preventDefault();
-    aboutCurrentPage = 0;
-    initAboutPageIndicator();
-    updateAboutPageContent();
-    document.getElementById('about-modal').style.display = "block";
-  });
+  const aboutLink = document.getElementById('about-link');
+  if (aboutLink) {
+    aboutLink.addEventListener('click', function(e) {
+      e.preventDefault();
+      aboutCurrentPage = 0;
+      initAboutPageIndicator();
+      updateAboutPageContent();
+      document.getElementById('about-modal').style.display = "block";
+    });
+  }
 
   // 点击关于我们弹窗外部关闭
   window.addEventListener('click', e => {
