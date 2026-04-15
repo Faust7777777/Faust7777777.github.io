@@ -2339,7 +2339,7 @@
                         <!-- 文件上传区 -->
                         <div class="form-group full-width">
                             <div class="file-upload">
-                              <a href="zixinbiao.png" download="资信表.png" class="btn btn-secondary">
+                              <a href="./zixinbiao.png" download="资信表.png" class="btn btn-secondary local-download-link" data-download-file="zixinbiao.png" data-download-name="资信表.png">
                                     <i class="fas fa-download"></i> 下载资信表
                                 </a>
                                 <div style="flex: 1; display: flex; align-items: center;">
@@ -2436,7 +2436,7 @@
                         <!-- 文件上传区 -->
                         <div class="form-group full-width">
                             <div class="file-upload">
-                               <a href="zixinbiao.png" download="资信表.png" class="btn btn-secondary">
+                               <a href="./zixinbiao.png" download="资信表.png" class="btn btn-secondary local-download-link" data-download-file="zixinbiao.png" data-download-name="资信表.png">
                                     <i class="fas fa-download"></i> 下载资信表
                                 </a>
                                 <div style="flex: 1; display: flex; align-items: center;">
@@ -2540,7 +2540,7 @@
                         <!-- 文件上传区 -->
                         <div class="form-group full-width">
                             <div class="file-upload">
-                            <a href="zixinbiao.png" download="资信表.png" class="btn btn-secondary">
+                            <a href="./zixinbiao.png" download="资信表.png" class="btn btn-secondary local-download-link" data-download-file="zixinbiao.png" data-download-name="资信表.png">
                                     <i class="fas fa-download"></i> 下载资信表
                                 </a>
                                 <div style="flex: 1; display: flex; align-items: center;">
@@ -3960,6 +3960,20 @@ const aboutPages = [{
       tabPanes.forEach(p => p.classList.remove('active'));
       link.classList.add('active');
       document.getElementById(targetId).classList.add('active');
+    });
+  });
+
+  document.querySelectorAll('.local-download-link').forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const fileName = this.dataset.downloadFile;
+      const downloadName = this.dataset.downloadName || fileName;
+      const tempLink = document.createElement('a');
+      tempLink.href = `./${fileName}`;
+      tempLink.download = downloadName;
+      document.body.appendChild(tempLink);
+      tempLink.click();
+      tempLink.remove();
     });
   });
 
